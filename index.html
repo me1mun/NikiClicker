@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="player-info">
+                <span class="player-name">Player Name</span>
+                <span class="player-league" id="leagueIcon"></span>
+                <span class="player-league" id="leagueName"></span>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="stats">
+                <span class="coin-count">0</span>
+            </div>
+            <div class="play-zone">
+                <img src="images/coin.png" alt="Coin" class="coin-img" onclick="clickCoin()">
+            </div>
+            <div class="energy-wrapper">
+                <div class="energy-icon">⚡</div>
+                <div class="energy-counter">100/100</div>
+                <div class="energy-bar">
+                    <div class="energy"></div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="menu">
+                <button class="menu-button" onclick="openProfile()">
+                    <div class="button-icon">👱‍♂️</div>
+                    <span class="button-text">Profile</span>
+                </button>
+                <div class="divider"></div>
+                <button class="menu-button" onclick="openReferralProgram()">
+                    <div class="button-icon">🤝</div>
+                    <span class="button-text">Frens</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <div class="modal" id="profileModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('profileModal')">&times;</span>
+            <h2>Player Profile</h2>
+            <div class="profile-name">John Doe</div>
+            <div class="profile-stats">
+                <p><span>🎮</span> Coins: 1000</p>
+                <p><span>💸</span> Coins Exchanged: 500</p>
+                <p><span>👆</span> Taps Made: 2000</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="referralModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('referralModal')">&times;</span>
+            <h2>Referral Program</h2>
+            <div class="referral-link" onclick="copyReferralLink()">Your Referral Link: <span id="referralLink">https://example.com/referral</span></div>
+            <p class="referral-description">Join our referral program and earn coins for every referral! Invite friends to join our community and receive rewards in coins. The more friends you invite, the more coins you earn. Don't miss out on this opportunity to boost your earnings with our referral program!</p>
+        </div>
+    </div>
+
+    <script src="gameplay.js"></script>
+</body>
+</html>
