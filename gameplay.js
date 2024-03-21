@@ -2,31 +2,17 @@ let coins = 0;
 let energyMax = 100;
 let energy = energyMax;
 
-function initializeProfile(playerName, gender, leagueNumber, coinCount, energyCount) {
+function initializeProfile(playerName, leagueNumber, coinCount, energyCount) {
     const playerNameElement = document.querySelector('.player-name');
     playerNameElement.textContent = playerName;
 
     coins = coinCount;
     energy = energyCount;
 
-    setGender(gender);
     setLeague(leagueNumber);
     updateUI();
 }
 
-function setGender(gender) {
-    const profileButton = document.querySelector('.menu-button');
-    const buttonIcon = profileButton.querySelector('.button-icon');
-
-    if (gender === 'male') {
-        buttonIcon.textContent = '👱‍♂️';
-    } else if (gender === 'female') {
-        buttonIcon.textContent = '👩';
-    }
-    else {
-        buttonIcon.textContent = '👤';
-    }
-}
 
 function setLeague(leagueNumber) {
     const leagueIcon = document.getElementById("leagueIcon");
@@ -47,7 +33,7 @@ function setLeague(leagueNumber) {
     }
 }
 
-initializeProfile('Michael Jackson', 'male', 1, 15, 100);
+initializeProfile('Michael Jackson', 1, 15, 100);
 
 function clickCoin() {
     let coinsEarned = Math.floor(Math.random() * 5) + 1;
@@ -72,6 +58,10 @@ function updateUI() {
 
 function openProfile() {
     document.getElementById("profileModal").style.display = "block";
+}
+
+function redirectToProfile() {
+    window.location.href = "frens.html";
 }
 
 function openReferralProgram() {

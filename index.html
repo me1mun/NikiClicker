@@ -38,7 +38,7 @@
                     <span class="button-text">Profile</span>
                 </button>
                 <div class="divider"></div>
-                <button class="menu-button" onclick="openReferralProgram()">
+                <button class="menu-button" onclick="redirectToProfile()">
                     <div class="button-icon">🤝</div>
                     <span class="button-text">Frens</span>
                 </button>
@@ -46,27 +46,6 @@
         </footer>
     </div>
 
-    <div class="modal" id="profileModal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('profileModal')">&times;</span>
-            <h2>Player Profile</h2>
-            <div class="profile-name">John Doe</div>
-            <div class="profile-stats">
-                <p><span>🎮</span> Coins: 1000</p>
-                <p><span>💸</span> Coins Exchanged: 500</p>
-                <p><span>👆</span> Taps Made: 2000</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal" id="referralModal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('referralModal')">&times;</span>
-            <h2>Referral Program</h2>
-            <div class="referral-link" onclick="copyReferralLink()">Your Referral Link: <span id="referralLink">https://example.com/referral</span></div>
-            <p class="referral-description">Join our referral program and earn coins for every referral! Invite friends to join our community and receive rewards in coins. The more friends you invite, the more coins you earn. Don't miss out on this opportunity to boost your earnings with our referral program!</p>
-        </div>
-    </div>
 
     <script src="gameplay.js"></script>
 </body>
