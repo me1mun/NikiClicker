@@ -38,17 +38,19 @@ initializeProfile('Michael Jackson', 1, 992, 100);
 function clickCoin() {
     let coinsEarned = Math.floor(Math.random() * 5) + 1;
 
-    if (energy >= coinsEarned && coinsEarned > 0) {
-        coins += coinsEarned;
-        energy -= coinsEarned;
-    } else if (energy < coinsEarned) {
-        coins += energy;
-        energy = 0;
+    if (coinsEarned > energy) {
+        coinsEarned = energy;
+    }
+
+    coins += coinsEarned;
+    energy -= coinsEarned;
+    
+    if (coinsEarned > 0) {
+        showIncome(coinsEarned);
+        updateUI();
+        updateUIBackground();
     }
     
-    showIncome(coinsEarned);
-    updateUI();
-    updateUIBackground();
 }
 
 function showIncome(income) {
