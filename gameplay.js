@@ -33,7 +33,7 @@ function setLeague(leagueNumber) {
     }
 }
 
-initializeProfile('Michael Jackson', 1, 15, 100);
+initializeProfile('Michael Jackson', 1, 992, 100);
 
 function clickCoin() {
     let coinsEarned = Math.floor(Math.random() * 5) + 1;
@@ -46,31 +46,76 @@ function clickCoin() {
         energy = 0;
     }
     
+    showIncome(coinsEarned);
     updateUI();
+    updateUIBackground();
 }
 
+function showIncome(income) {
+    var incomeElement = document.createElement('div');
+    var cursorX = event.clientX;
+    var cursorY = event.clientY;
+    incomeElement.innerText = '' + income;
+
+    incomeElement.classList.add('income');
+    incomeElement.style.left = (cursorX - 4) + 'px';
+    incomeElement.style.top = (cursorY - 16) + 'px';
+
+    document.body.appendChild(incomeElement);
+    
+    setTimeout(function() {
+        incomeElement.style.top = (cursorY - 64) + 'px';
+    }, 10);
+
+    setTimeout(function() {
+        incomeElement.style.opacity = "0";
+    }, 250);
+
+    setTimeout(function() {
+        incomeElement.remove();
+    }, 1000);
+}
 
 function updateUI() {
-    document.querySelector('.coin-count').textContent = coins;
+    document.querySelector('.coin-count').textContent = "🌕" + coins.toLocaleString('en-EN');
     document.querySelector('.energy').style.width = energy + '%';
-    document.querySelector('.energy-counter').textContent = energy + '/' + energyMax;
+    document.querySelector('.energy-counter').textContent = energy;
 }
 
-function openProfile() {
-    document.getElementById("profileModal").style.display = "block";
+function updateUIBackground() {
+    if (coins < 1000) {
+        document.body.style.background = "radial-gradient(circle at center, rgb(161, 146, 173), rgb(30, 30, 30) 75%)";
+    } else {
+        document.body.style.background = "radial-gradient(circle at center, rgb(147, 15, 255), rgb(30, 30, 30) 75%)";
+    }
 }
 
-function redirectToProfile() {
-    window.location.href = "frens.html";
-}
+function openModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "block";
 
-function openReferralProgram() {
-    document.getElementById("referralModal").style.display = "block";
+    setTimeout(function() {
+        modal.style.backgroundColor = "rgba(0, 0, 0, 0.75)";
+        modal.getElementsByClassName('modal-content')[0].style.bottom = "0";
+    }, 50);
 }
 
 function closeModal(modalId) {
-    document.getElementById(modalId).style.display = "none";
+    var modal = document.getElementById(modalId);
+    var modalContent = modal.getElementsByClassName('modal-content')[0];
+
+    modalContent.style.bottom = "-80%";
+    modal.style.backgroundColor = "rgba(0, 0, 0, 0)";
+
+    modalContent.addEventListener("transitionend", function() {
+        modalContent.removeEventListener("transitionend", arguments.callee);
+        
+        modal.style.display = "none";
+    });
 }
+
+
+
 
 setInterval(function() {
     if (energy < 100) {

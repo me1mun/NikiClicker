@@ -1,0 +1,80 @@
+.tasks-coin-img {
+    display: block;
+    width: 50%;
+    max-width: 110px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.task-section {
+    margin-top: 32px;
+    width: 100%;
+}
+
+.task-section-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.task-blocks-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 16px;
+}
+
+.task-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 360px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(64, 64, 64, 0.5) 23.5%, rgba(128, 128, 128, 0.5) 100%);
+
+    padding: 16px;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+}
+
+.task-icon {
+    flex: 0 0 auto;
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-text {
+    flex: 1;
+}
+
+.task-title {
+    font-size: 11px;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.task-prize {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.task-button {
+    width: 32px;
+    height: 32px;
+    margin-left: 8px;
+    background-color: transparent;
+    color: white;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+}
+

@@ -1,6 +1,5 @@
 html {
-    background: radial-gradient(circle at center bottom, rgb(57, 162, 255), rgb(30, 30, 30) 75%);
-    color: #eee;
+    
     margin: 0;
     padding: 0;
 }
@@ -9,7 +8,14 @@ html {
     box-sizing: border-box;
 }
 
+button {
+    outline: none;
+    box-shadow: none;
+}
+
 body {
+    background: radial-gradient(circle at center, rgb(161, 146, 173), rgb(30, 30, 30) 75%);
+    color: #eee;
     font-family: Arial, sans-serif;
 }
 
@@ -39,7 +45,7 @@ body {
 .player-info {
     width: 80%;
     max-width: 240px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(90deg, rgba(0, 194, 255, 0.67) 0%, rgba(255, 0, 230, 0.38) 100%);
     border-radius: 10px;
     padding: 5px 10px;
     display: inline-block;
@@ -67,8 +73,21 @@ body {
     align-items: center;
 }
 
+.income {
+    position: absolute;
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    opacity: 1;
+    transition: opacity 0.5s, top 0.75s;
+    pointer-events: none;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+
 .coin-img {
-    width: 50%;
+    width: 75%;
     height: auto;
     transition: transform 0.1s ease-in-out;
 }
@@ -78,8 +97,8 @@ body {
 }
 
 .coin-count {
-    font-size: 32px;
-    font-weight: 900;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .stats {
@@ -94,12 +113,13 @@ body {
 }
 
 .energy-icon {
-    margin-right: 5px;
+    margin-right: 2px;
     font-size: 20px;
 }
 
 .energy-counter {
-    margin-right: 10px;
+    margin-right: 8px;
+    font-weight: 700;
 }
 
 .energy-bar {
@@ -113,7 +133,7 @@ body {
 
 .energy {
     height: 100%;
-    background: linear-gradient(to right, rgb(255, 129, 33) 0%, rgb(255, 217, 102) 100%);
+    background: linear-gradient(90deg, #5B6CC5 25.5%, #CDE5F2 100%);
     border-radius: 10px;
     position: absolute;
     top: 0;
@@ -127,21 +147,32 @@ body {
     position: fixed;
     z-index: 1;
     left: 0;
-    top: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0, 0, 0, 0.75);
+    transition: background-color 0.25s ease;
+    overflow: hidden;
+}
+
+.modal-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
 }
 
 .modal-content {
-    background-color: #2b2b2b;
-    margin: 15% auto;
+    position: absolute;
+    bottom: -80%;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: radial-gradient(circle at center bottom, rgb(255, 176, 50), rgb(30, 30, 30) 50%);
+    transition: bottom 0.25s ease;
     padding: 20px;
-    border-radius: 10px;
-    width: 50%;
-    max-width: 360px;
-    text-align: center;
+    border-radius: 20px 20px 0px 0px;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
 
 .close {
@@ -184,12 +215,13 @@ body {
 }
 
 .menu {
-    width: auto;
+    width: 94%;
+    min-width: 240px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(90deg, rgba(0, 194, 255, 0.29) 0%, rgba(255, 0, 230, 0.06) 100%);
     border-radius: 10px;
     padding: 15px;
 }
@@ -197,27 +229,31 @@ body {
 .menu-button {
     border: none;
     padding: 0;
-    width: 80px;
+    width: 25%;
+    height: auto;
+    max-width: 60px;
     background: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
+    outline: none;
 }
 
 .button-icon {
-    font-size: 28px;
+    font-size: 22px;
     margin-bottom: 5px;
 }
 
 .button-text {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 11px;
+    font-weight: 700;
 }
 
 .divider {
     height: 66%;
     width: 2px;
     background-color: rgba(255, 255, 255, 0.25);
-    margin: 0 10px;
+    margin: 0 6px;
 }

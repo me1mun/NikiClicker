@@ -6,6 +6,7 @@
     <title>Clicker Game</title>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tasks.css">
 </head>
 <body>
     <div class="container">
@@ -18,14 +19,15 @@
         </div>
         <div class="main-content">
             <div class="stats">
-                <span class="coin-count">0</span>
+                <span class="coin-count">🌕0</span>
             </div>
             <div class="play-zone">
-                <img src="images/coin.png" alt="Coin" class="coin-img" onclick="clickCoin()">
+                
+                <img src="images/coin.png" alt="Coin" class="coin-img" draggable="false" onclick="clickCoin()">
             </div>
             <div class="energy-wrapper">
-                <div class="energy-icon">⚡</div>
-                <div class="energy-counter">100/100</div>
+                <div class="energy-icon">🔋</div>
+                <div class="energy-counter">100</div>
                 <div class="energy-bar">
                     <div class="energy"></div>
                 </div>
@@ -33,20 +35,121 @@
         </div>
         <footer class="footer">
             <div class="menu">
-                <button class="menu-button" onclick="openProfile()">
-                    <div class="button-icon">👱‍♂️</div>
-                    <span class="button-text">Profile</span>
+                <button class="menu-button">
+                    <div class="button-icon">🚀</div>
+                    <span class="button-text">Play</span>
                 </button>
                 <div class="divider"></div>
-                <button class="menu-button" onclick="redirectToProfile()">
-                    <div class="button-icon">🤝</div>
+                <button class="menu-button" onclick="openModal('frensModal')">
+                    <div class="button-icon">🎁</div>
                     <span class="button-text">Frens</span>
+                </button>
+                <div class="divider"></div>
+                <button class="menu-button" onclick="openModal('frensModal')">
+                    <div class="button-icon">🌕</div>
+                    <span class="button-text">Tasks</span>
+                </button>
+                <div class="divider"></div>
+                <button class="menu-button" onclick="openModal('frensModal')">
+                    <div class="button-icon">🛍</div>
+                    <span class="button-text">Shop</span>
                 </button>
             </div>
         </footer>
     </div>
-
-
+    <div id="frensModal" class="modal">
+        <span class="close" onclick="closeModal('frensModal')">&times;</span>
+        <div class="modal-content">
+            <img src="images/coin.png" class="tasks-coin-img" draggable="false">
+            <h2 class="modal-title">Easiest 🌕 in your life</h2>
+        <div class="task-section">
+            <p class="task-section-title">Common Tasks 0/12</p>
+            <div class="task-blocks-container">
+                <div class="task-block">
+                    <div class="task">
+                        <div class="task-icon">📸</div>
+                        <div class="task-text">
+                            <div class="task-title">Photo of your pet</div>
+                            <div class="task-prize">+ 1,000🌕</div>
+                        </div>
+                        <button class="task-button">></button>
+                    </div>
+                    <div class="task">
+                        <div class="task-icon">😂</div>
+                        <div class="task-text">
+                            <div class="task-title">Create a meme with Nicky</div>
+                            <div class="task-prize">+ 1,500🌕</div>
+                        </div>
+                        <button class="task-button">></button>
+                    </div>
+                    <div class="task">
+                        <div class="task-icon">👫</div>
+                        <div class="task-text">
+                            <div class="task-title">Invite a friend to the bot</div>
+                            <div class="task-prize">+ 2,000🌕</div>
+                        </div>
+                        <button class="task-button">></button>
+                    </div>
+                    <div class="task">
+                        <div class="task-icon">📷</div>
+                        <div class="task-text">
+                            <div class="task-title">Subscribe on Instagram</div>
+                            <div class="task-prize">+ 2,500🌕</div>
+                        </div>
+                        <button class="task-button">></button>
+                    </div>
+                </div>
+                <div class="task-block">
+                    <div class="task">
+                        <div class="task-icon">📸</div>
+                        <div class="task-text">
+                            <div class="task-title">Photo of your pet</div>
+                            <div class="task-prize">+ 1,000🌕</div>
+                        </div>
+                        <button class="task-button">></button>
+                    </div>
+                    <div class="task">
+                        <div class="task-icon">😂</div>
+                        <div class="task-text">
+                            <div class="task-title">Create a meme with Nicky</div>
+                            <div class="task-prize">+ 1,500🌕</div>
+                        </div>
+                        <button class="task-button">></button>
+                    </div>
+                    <div class="task">
+                        <div class="task-icon">👫</div>
+                        <div class="task-text">
+                            <div class="task-title">Invite a friend to the bot</div>
+                            <div class="task-prize">+ 2,000🌕</div>
+                        </div>
+                        <button class="task-button">></button>
+                    </div>
+                    <div class="task">
+                        <div class="task-icon">📷</div>
+                        <div class="task-text">
+                            <div class="task-title">Subscribe on Instagram</div>
+                            <div class="task-prize">+ 2,500🌕</div>
+                        </div>
+                        <button class="task-button">></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section 2 -->
+        <div class="task-section">
+            <p class="task-section-title">Silver Tasks</p>
+            <p>Comming soon</p>
+            <!-- You can add similar placeholders for other sections -->
+        </div>
+        <!-- Section 3 -->
+        <div class="task-section">
+            <p class="task-section-title">Gold Tasks</p>
+            <p>Comming soon</p>
+            <!-- You can add similar placeholders for other sections -->
+        </div>
+        </div>
+    </div>
     <script src="gameplay.js"></script>
 </body>
 </html>
