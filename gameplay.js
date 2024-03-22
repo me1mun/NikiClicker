@@ -49,7 +49,7 @@ function gameplayInit() {
         coinImage.style.transform = "perspective(1000px) " +
         "rotateX(" + rotateX + "deg) " +
         "rotateY(" + rotateY + "deg) " +
-        "scale3d(1, 1, 1)";
+        "scale3d(0.98, 0.98, 0.98)";
     });
 
     coinImage.addEventListener('transitionend', function() {
@@ -89,7 +89,7 @@ function showIncome(income) {
     document.body.appendChild(incomeElement);
     
     setTimeout(function() {
-        incomeElement.style.top = (cursorY - 72) + 'px';
+        incomeElement.style.top = (cursorY - 96) + 'px';
     }, 10);
 
     setTimeout(function() {
