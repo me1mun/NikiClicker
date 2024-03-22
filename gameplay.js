@@ -3,6 +3,7 @@ let energyMax = 1000;
 let energy = energyMax;
 
 initializeProfile('skvortsovddd', 1, 992, 1000);
+disableContextMenu();
 
 function initializeProfile(playerName, leagueNumber, coinCount, energyCount) {
     const playerNameElement = document.querySelector('.player-name');
@@ -119,15 +120,23 @@ function closeModal(modalId) {
     });
 }
 
+function disableContextMenu() {
+    var images = document.querySelectorAll('img');
 
+    images.forEach(function(image) {
+        image.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+    });
+}
 
 function flipCoin() {
     let coinElement = document.querySelector('.gameplay-coin');
     let angle = 0;
-    angle += 45; // Изменяем угол поворота на 45 градусов при каждом клике
+    angle += 45;
     coinElement.style.transform = `rotateY(${angle}deg)`;
     setTimeout(() => {
-        coinElement.style.transform = `rotateY(${angle - 45}deg)`; // Возвращаем монету в исходное положение через некоторое время (можно изменить длительность с помощью параметра в setTimeout)
+        coinElement.style.transform = `rotateY(${angle - 45}deg)`;
     }, 500);
 }
 
