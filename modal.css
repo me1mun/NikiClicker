@@ -21,6 +21,11 @@
     font-size: 16px;
     border: none;
     cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.modal-button-arrow:active {
+    transform: scale(0.75);
 }
 
 .modal-img {

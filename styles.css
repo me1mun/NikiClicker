@@ -9,8 +9,8 @@ html {
 }
 
 button {
-    outline: none;
-    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
