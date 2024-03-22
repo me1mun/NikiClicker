@@ -51,6 +51,7 @@ function clickCoin() {
     var element = document.querySelector(".gameplay-coin img");
     VanillaTilt.init(element, {
         reverse: true,
+        gyroscope: false,
         max: 25,
         speed: 400
     });
