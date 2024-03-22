@@ -4,6 +4,7 @@ let energy = energyMax;
 
 initializeProfile('skvortsovddd', 1, 992, 1000);
 disableContextMenu();
+gameplayInit();
 
 function initializeProfile(playerName, leagueNumber, coinCount, energyCount) {
     const playerNameElement = document.querySelector('.player-name');
@@ -31,6 +32,32 @@ function setLeague(leagueNumber) {
     }
 }
 
+function gameplayInit() {
+    var coinImage = document.getElementById('gameplay-coin');
+
+    coinImage.addEventListener('mousedown', function (event) {
+        var containerRect = coinImage.getBoundingClientRect();
+        var centerX = (event.clientX - containerRect.left) / containerRect.width * 2 - 1;
+        var centerY = (event.clientY - containerRect.top) / containerRect.height * 2 - 1;
+        
+        console.log("Distance from center to cursor (X): " + centerX);
+        console.log("Distance from center to cursor (Y): " + centerY);
+
+        var rotateX = -centerY * 20;
+        var rotateY = centerX * 20;
+
+        coinImage.style.transform = "perspective(1000px) " +
+        "rotateX(" + rotateX + "deg) " +
+        "rotateY(" + rotateY + "deg) " +
+        "scale3d(1, 1, 1)";
+    });
+
+    coinImage.addEventListener('transitionend', function() {
+        coinImage.style.transition = ""; // Сбрасываем анимацию
+        coinImage.style.transform = ""; // Возвращаем монету в исходное положение
+    }, { once: false });
+}
+
 function clickCoin() {
     let coinsEarned = Math.floor(Math.random() * 5) + 1;
 
@@ -47,21 +74,6 @@ function clickCoin() {
         updateEnergy()
         updateUIBackground();
     }
-    
-    var element = document.querySelector(".gameplay-coin img");
-    VanillaTilt.init(element, {
-        reverse: true,
-        gyroscope: false,
-        transition: true,
-        max: 25,
-        speed: 400
-    });
-
-    element.vanillaTilt.updatePosition();
-
-    setTimeout(function() {
-        element.vanillaTilt.destroy();
-    }, 150);
 }
 
 function showIncome(income) {

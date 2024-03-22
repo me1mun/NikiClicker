@@ -220,12 +220,6 @@ class VanillaTilt {
       "rotateX(" + values.tiltY + "deg) " +
       "rotateY(" + values.tiltX + "deg) " +
       "scale3d(" + this.settings.scale + ", " + this.settings.scale + ", " + this.settings.scale + ")";
-
-    this.element.dispatchEvent(new CustomEvent("tiltChange", {
-      "detail": values
-    }));
-
-    this.updateCall = requestAnimationFrame(this.updateBind);
   }
 
 

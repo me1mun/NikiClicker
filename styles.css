@@ -127,13 +127,14 @@ body {
 .gameplay-coin {
     width: 75%;
     height: auto;
+    
 }
 
 .gameplay-coin img {
     width: 100%;
     height: auto;
-
     transition: 0.15s;
+    perspective: 1000px;
 }
 
 .coin-count {
