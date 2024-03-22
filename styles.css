@@ -14,9 +14,24 @@ button {
 }
 
 body {
-    background: radial-gradient(circle at center, rgb(161, 146, 173), rgb(30, 30, 30) 75%);
+    background: rgb(29, 29, 29);
+    background-image: url('images/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     color: #eee;
     font-family: Arial, sans-serif;
+}
+
+.coin-icon {
+    background-image: url('images/coin.png');
+    display: inline;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: -0.1em;
+    width: 1em;
+    height: auto;
+    vertical-align: middle;
 }
 
 .container {
@@ -27,7 +42,7 @@ body {
     height: 100vh;
     max-width: 480px;
     margin: auto;
-    padding: 40px;
+    padding: 20px;
 }
 
 .header, .main-content, .footer {
@@ -43,25 +58,45 @@ body {
 }
 
 .player-info {
-    width: 80%;
-    max-width: 240px;
+    display: flex;
+    align-items: center;
+    width: 100%;
     background: linear-gradient(90deg, rgba(0, 194, 255, 0.67) 0%, rgba(255, 0, 230, 0.38) 100%);
     border-radius: 10px;
-    padding: 5px 10px;
-    display: inline-block;
-    padding: 15px;
-    text-align: center;
+    padding: 12px;
+}
+
+.player-photo {
+    flex: 0 0 auto;
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-text {
+    flex: 1;
 }
 
 .player-name {
-    font-size: 18px;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.player-coins {
+    font-size: 12px;
     font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
 }
 
 .player-league {
-    font-size: 14px;
+    text-align: right;
+    margin-left: 8px;
+    font-size: 12px;
+    right: 0px;
 }
 
 .play-zone {
@@ -92,17 +127,34 @@ body {
     transition: transform 0.1s ease-in-out;
 }
 
+.coin-glow::before {
+    position: absolute;
+    z-index: -1;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 150px rgba(255, 13, 166, 1);
+    border-radius: 50%;
+}
+
 .coin-img:active {
     transform: scale(0.95);
 }
 
 .coin-count {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
 }
 
 .stats {
+    display: flex;
     padding-top: 10%;
+    align-items: center;
+}
+
+.stats-coin {
+    width: 32px;
+    height: auto;
+    margin-right: 8px;
 }
 
 .energy-wrapper {
@@ -142,80 +194,8 @@ body {
     transition: width 0.1s ease;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    transition: background-color 0.25s ease;
-    overflow: hidden;
-}
-
-.modal-title {
-    text-align: center;
-    font-weight: bold;
-    font-size: 22px;
-}
-
-.modal-content {
-    position: absolute;
-    bottom: -80%;
-    left: 0;
-    width: 100%;
-    height: 80%;
-    background: radial-gradient(circle at center bottom, rgb(255, 176, 50), rgb(30, 30, 30) 50%);
-    transition: bottom 0.25s ease;
-    padding: 20px;
-    border-radius: 20px 20px 0px 0px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: rgba(255, 255, 255, 1);
-    font-size: 32px;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: rgba(255, 255, 255, 0.25);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.referral-link {
-    background-color: rgb(255, 255, 255, 0.1);
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 20px;
-    cursor: pointer;
-    word-wrap: break-word;
-}
-
-.referral-description {
-    font-size: 14px;
-}
-
-.profile-name {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 14px;
-}
-
-.profile-stats {
-    text-align: left;
-    margin-top: 40px;
-}
-
 .menu {
-    width: 94%;
+    width: 100%;
     min-width: 240px;
     display: flex;
     flex-direction: row;
@@ -242,12 +222,12 @@ body {
 
 .button-icon {
     font-size: 22px;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .button-text {
     color: rgba(255, 255, 255, 0.8);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
 }
 

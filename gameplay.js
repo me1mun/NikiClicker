@@ -10,30 +10,25 @@ function initializeProfile(playerName, leagueNumber, coinCount, energyCount) {
     energy = energyCount;
 
     setLeague(leagueNumber);
-    updateUI();
+    updateBalance();
+    updateEnergy()
 }
 
-
 function setLeague(leagueNumber) {
-    const leagueIcon = document.getElementById("leagueIcon");
-    const leagueName = document.getElementById("leagueName");
+    const leagueName = document.getElementById("player-league");
     
     if (leagueNumber === 1) {
-        leagueIcon.innerHTML = "🥇";
-        leagueName.textContent = "Gold League";
+        leagueName.innerHTML = "🥇 Gold League";
     } else if (leagueNumber === 2) {
-        leagueIcon.innerHTML = "🥈";
-        leagueName.textContent = "Silver League";
+        leagueName.innerHTML = "🥈 Silver League";
     } else if (leagueNumber === 3) {
-        leagueIcon.innerHTML = "🥉";
-        leagueName.textContent = "Bronze League";
+        leagueName.innerHTML = "🥉 Bronze League";
     } else {
-        leagueIcon.innerHTML = "";
-        leagueName.textContent = "Unknown League";
+        leagueName.innerHTML = "Unknown League";
     }
 }
 
-initializeProfile('Michael Jackson', 1, 992, 100);
+initializeProfile('skvortsovddd', 1, 992, 100);
 
 function clickCoin() {
     let coinsEarned = Math.floor(Math.random() * 5) + 1;
@@ -47,7 +42,8 @@ function clickCoin() {
     
     if (coinsEarned > 0) {
         showIncome(coinsEarned);
-        updateUI();
+        updateBalance();
+        updateEnergy()
         updateUIBackground();
     }
     
@@ -61,12 +57,12 @@ function showIncome(income) {
 
     incomeElement.classList.add('income');
     incomeElement.style.left = (cursorX - 4) + 'px';
-    incomeElement.style.top = (cursorY - 16) + 'px';
+    incomeElement.style.top = (cursorY - 24) + 'px';
 
     document.body.appendChild(incomeElement);
     
     setTimeout(function() {
-        incomeElement.style.top = (cursorY - 64) + 'px';
+        incomeElement.style.top = (cursorY - 72) + 'px';
     }, 10);
 
     setTimeout(function() {
@@ -78,17 +74,24 @@ function showIncome(income) {
     }, 1000);
 }
 
-function updateUI() {
-    document.querySelector('.coin-count').textContent = "🌕" + coins.toLocaleString('en-EN');
-    document.querySelector('.energy').style.width = energy + '%';
+function updateEnergy() {
+    document.querySelector('.energy').style.width = (energy / energyMax * 100) + '%';
     document.querySelector('.energy-counter').textContent = energy;
+}
+
+function updateBalance() {
+    var balanceElements = document.querySelectorAll('#balance');
+
+    balanceElements.forEach(function(element) {
+        element.textContent = coins.toLocaleString('en-EN');
+    });
 }
 
 function updateUIBackground() {
     if (coins < 1000) {
-        document.body.style.background = "radial-gradient(circle at center, rgb(161, 146, 173), rgb(30, 30, 30) 75%)";
+        
     } else {
-        document.body.style.background = "radial-gradient(circle at center, rgb(147, 15, 255), rgb(30, 30, 30) 75%)";
+        
     }
 }
 
@@ -122,6 +125,6 @@ function closeModal(modalId) {
 setInterval(function() {
     if (energy < 100) {
         energy += 1;
-        updateUI();
+        updateEnergy();
     }
 }, 1000);
