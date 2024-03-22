@@ -225,7 +225,7 @@ class VanillaTilt {
       "detail": values
     }));
 
-    this.updateCall = null;
+    this.updateCall = requestAnimationFrame(this.updateBind);
   }
 
 

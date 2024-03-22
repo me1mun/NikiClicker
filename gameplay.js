@@ -57,7 +57,7 @@ function clickCoin() {
         speed: 400
     });
 
-    element.vanillaTilt.update();
+    element.vanillaTilt.updatePosition();
 
     setTimeout(function() {
         element.vanillaTilt.destroy();
