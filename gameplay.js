@@ -1,6 +1,8 @@
 let coins = 0;
-let energyMax = 100;
+let energyMax = 1000;
 let energy = energyMax;
+
+initializeProfile('skvortsovddd', 1, 992, 1000);
 
 function initializeProfile(playerName, leagueNumber, coinCount, energyCount) {
     const playerNameElement = document.querySelector('.player-name');
@@ -27,8 +29,6 @@ function setLeague(leagueNumber) {
         leagueName.innerHTML = "Unknown League";
     }
 }
-
-initializeProfile('skvortsovddd', 1, 992, 100);
 
 function clickCoin() {
     let coinsEarned = Math.floor(Math.random() * 5) + 1;
@@ -121,9 +121,19 @@ function closeModal(modalId) {
 
 
 
+function flipCoin() {
+    let coinElement = document.querySelector('.gameplay-coin');
+    let angle = 0;
+    angle += 45; // Изменяем угол поворота на 45 градусов при каждом клике
+    coinElement.style.transform = `rotateY(${angle}deg)`;
+    setTimeout(() => {
+        coinElement.style.transform = `rotateY(${angle - 45}deg)`; // Возвращаем монету в исходное положение через некоторое время (можно изменить длительность с помощью параметра в setTimeout)
+    }, 500);
+}
+
 
 setInterval(function() {
-    if (energy < 100) {
+    if (energy < energyMax) {
         energy += 1;
         updateEnergy();
     }
