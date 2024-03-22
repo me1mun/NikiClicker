@@ -57,11 +57,11 @@ function clickCoin() {
         speed: 400
     });
 
-    element.vanillaTilt.update()
+    element.vanillaTilt.update();
 
     setTimeout(function() {
         element.vanillaTilt.destroy();
-    }, 100);
+    }, 150);
 }
 
 function showIncome(income) {

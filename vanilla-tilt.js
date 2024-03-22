@@ -104,6 +104,7 @@ class VanillaTilt {
     this.onDeviceOrientationBind = this.onDeviceOrientation.bind(this);
 
     this.elementListener.addEventListener("mouseenter", this.onMouseEnterBind);
+    this.elementListener.addEventListener("onClick", this.onMouseMoveBind);
     this.elementListener.addEventListener("mouseleave", this.onMouseLeaveBind);
     this.elementListener.addEventListener("mousemove", this.onMouseMoveBind);
 
@@ -211,6 +212,22 @@ class VanillaTilt {
     this.event = event;
     this.updateCall = requestAnimationFrame(this.updateBind);
   }
+
+  updatePosition() {
+    let values = this.getValues();
+
+    this.element.style.transform = "perspective(" + this.settings.perspective + "px) " +
+      "rotateX(" + values.tiltY + "deg) " +
+      "rotateY(" + values.tiltX + "deg) " +
+      "scale3d(" + this.settings.scale + ", " + this.settings.scale + ", " + this.settings.scale + ")";
+
+    this.element.dispatchEvent(new CustomEvent("tiltChange", {
+      "detail": values
+    }));
+
+    this.updateCall = null;
+  }
+
 
   onMouseLeave() {
     this.setTransition();
