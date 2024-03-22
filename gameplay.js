@@ -52,6 +52,7 @@ function clickCoin() {
     VanillaTilt.init(element, {
         reverse: true,
         gyroscope: false,
+        transition: true,
         max: 25,
         speed: 400
     });
