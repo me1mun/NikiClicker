@@ -48,6 +48,18 @@ function clickCoin() {
         updateUIBackground();
     }
     
+    var element = document.querySelector(".gameplay-coin img");
+    VanillaTilt.init(element, {
+        reverse: true,
+        max: 25,
+        speed: 400
+    });
+
+    element.vanillaTilt.update()
+
+    setTimeout(function() {
+        element.vanillaTilt.destroy();
+    }, 100);
 }
 
 function showIncome(income) {

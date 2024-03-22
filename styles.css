@@ -132,6 +132,8 @@ body {
 .gameplay-coin img {
     width: 100%;
     height: auto;
+
+    transition: 0.1s;
 }
 
 .coin-count {
