@@ -139,7 +139,7 @@ setInterval(function() {
     }
 }, 1000);
 
-const bonuses = [
+const pets = [
     { image: 'images/pets/pet_dog.png', points: 10, chance: 0.19 },
     { image: 'images/pets/pet_cat.png', points: 14, chance: 0.17 },
     { image: 'images/pets/pet_monkey.png', points: 16, chance: 0.15 },
@@ -153,51 +153,51 @@ const bonuses = [
     { image: 'images/pets/pet_niki.png', points: 100, chance: 0.01 }
 ];
 
-function getRandomBonus() {
+function getRandomPet() {
     const random = Math.random();
     let cumulativeChance = 0;
 
-    for (const bonus of bonuses) {
-        cumulativeChance += bonus.chance;
+    for (const pet of pets) {
+        cumulativeChance += pet.chance;
         if (random <= cumulativeChance) {
-            return bonus;
+            return pet;
         }
     }
 }
 
-function displayBonus() {
-    const bonus = getRandomBonus();
-    const bonusElement = document.getElementById('bonus');
-    const imgElement = bonusElement.querySelector('img');
-    imgElement.src = bonus.image;
+function displayPet() {
+    const pet = getRandomPet();
+    const petElement = document.getElementById('pet');
+    const imgElement = petElement.querySelector('img');
+    imgElement.src = pet.image;
 
-    bonusElement.style.display = 'block';
-    bonusElement.dataset.points = bonus.points;
+    petElement.style.display = 'block';
+    petElement.dataset.points = pet.points;
 
     const randomX = Math.random() * 80 + 10;
     const randomY = Math.random() * 80 + 10;
 
-    bonusElement.style.left = randomX + '%';
-    bonusElement.style.top = randomY + '%';
+    petElement.style.left = randomX + '%';
+    petElement.style.top = randomY + '%';
 }
 
 
 
-function handleBonusClick() {
+function handlePetClick() {
     if (energy > 0) {
-        const bonusElement = document.getElementById('bonus');
-        const bonusCoins = parseInt(bonusElement.dataset.points);
-        const min = bonusCoins * 0.5;
-        const max = bonusCoins * 1.5;
+        const petElement = document.getElementById('pet');
+        const petCoins = parseInt(petElement.dataset.points);
+        const min = petCoins * 0.5;
+        const max = petCoins * 1.5;
         const randomBonus = Math.floor(Math.random() * (max - min + 1)) + min;
         earnCoins(randomBonus);
 
-        bonusElement.style.display = 'none';
+        petElement.style.display = 'none';
 
-        setTimeout(displayBonus, 1000);
+        setTimeout(displayPet, 1000);
     }
 }
 
-document.getElementById('bonus').addEventListener('click', handleBonusClick);
+document.getElementById('pet').addEventListener('click', handlePetClick);
 
-setTimeout(displayBonus, 1000);
+setTimeout(displayPet, 1000);

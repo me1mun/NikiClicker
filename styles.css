@@ -112,7 +112,7 @@ body {
     align-items: center;
 }
 
-.bonus {
+.pet {
     display: none;
     position: absolute;
     aspect-ratio : 1 / 1;
@@ -135,7 +135,7 @@ body {
     }
 }
 
-.bonus img {
+.pet img {
     position: absolute;
     width: 100%;
     height: 100%;
