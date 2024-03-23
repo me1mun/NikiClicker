@@ -26,6 +26,19 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.background-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center bottom, rgba(225, 0, 255, 0.8) 0%, rgba(227, 13, 255, 0) 50%);
+    pointer-events: none;
+    z-index: -1;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
 .coin-icon {
     background-image: url('images/coin.png');
     display: inline;
@@ -104,7 +117,8 @@ body {
 
 .play-zone {
     position: relative;
-    width: 92%;
+    width: 100%;
+    max-width: 360px;
     aspect-ratio : 1 / 1;
     display: flex;
     flex-direction: column;

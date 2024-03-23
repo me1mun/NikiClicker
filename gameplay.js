@@ -1,5 +1,6 @@
-let pets;
-let upgrades;
+let pets, upgrades, specials;
+let specialPrice = 1000;
+let coinMultiplierMode = false;
 
 let coins = 0;
 let energyMax = 1000;
@@ -34,6 +35,11 @@ function gameplayInit() {
         { name: "multitap", level: 1 },
         { name: "rechargingSpeed", level: 1 },
         { name: "energyLimit", level: 1 }
+    ];
+
+    specials = [
+        { name: "coinMultiplier", available: 1 },
+        { name: "fullEnergy", available: 1 }
     ];
 
     pets = [
@@ -92,6 +98,10 @@ function pay(value) {
 }
 
 function earnCoins(value) {
+    if (coinMultiplierMode) {
+        value *= 5;
+    }
+
     if (value > energy) {
         value = energy;
     }
@@ -150,6 +160,7 @@ function refreshUI() {
     refreshEnergyUI();
     refreshBalanceUI();
     refreshUpgradeUI();
+    refreshSpecialUI();
 }
 
 function refreshEnergyUI() {
@@ -242,6 +253,15 @@ function getUpgradeLevel(characteristic) {
     return upgrade ? upgrade.level : null;
 }
 
+function getUpgradeCost(level) {
+    level -=1;
+    const levelCosts = [1000, 2000, 5000, 10000];
+    if (level >= levelCosts.length) {
+        return null;
+    }
+    return levelCosts[level];
+}
+
 function refreshUpgradeUI() {
     upgrades.forEach(upgrade => {
         const upgradeElement = document.getElementById(`upgrade-${upgrade.name}`);
@@ -257,15 +277,6 @@ function refreshUpgradeUI() {
             costElement.style.display = "none";
         }
     });
-}
-
-function getUpgradeCost(level) {
-    level -=1;
-    const levelCosts = [1000, 2000, 5000, 10000];
-    if (level >= levelCosts.length) {
-        return null;
-    }
-    return levelCosts[level];
 }
 
 function upgrade(upgradeName) {
@@ -285,3 +296,53 @@ function upgrade(upgradeName) {
     }
 }
 
+function refreshSpecialUI() {
+    specials.forEach(special => {
+        const specialElement = document.getElementById(`special-${special.name}`);
+        const countElement = specialElement.querySelector(`#shop-special-count`);
+        const costElement = specialElement.querySelector(`#shop-special-cost`);
+
+        if (special.available > 0) {
+            countElement.querySelector(`span`).textContent = special.available;
+            countElement.style.display = "block";
+            costElement.style.display = "none";
+        } else {
+            costElement.querySelector(`span`).textContent = specialPrice;
+            countElement.style.display = "none";
+            costElement.style.display = "block";
+        }
+    });
+}
+
+function activateSpecial(specialName) {
+    const special = specials.find(special => special.name === specialName);
+
+    if (special.available > 0) {
+        special.available--;
+        applySpecialEffects(specialName);
+        refreshSpecialUI();
+    } else {
+        if (coins >= specialPrice) {
+            pay(specialPrice);
+            applySpecialEffects(specialName);
+            refreshSpecialUI();
+        }
+    }
+}
+
+function applySpecialEffects(specialName) {
+    closeModal("shopModal");
+
+    if (specialName == "fullEnergy")
+    {
+        editEnergy(energyMax - energy);
+    } else if (specialName === "coinMultiplier") {
+        coinMultiplierMode = true;
+        document.querySelector('#coinMultiplierGlow').style.opacity = 1;
+
+        setTimeout(() => {
+            coinMultiplierMode = false;
+            document.querySelector('#coinMultiplierGlow').style.opacity = 0;
+        }, 10000);
+    }
+}
