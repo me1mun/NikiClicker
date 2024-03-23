@@ -71,10 +71,18 @@
     font-size: 14px;
 }
 
+.modal-section-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
 .modal-content {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     max-width: 480px;
     margin: 0 auto;
 }
@@ -87,7 +95,7 @@
     width: 100%;
     min-height: 64px;
     border-radius: 10px;
-    background: linear-gradient(90deg, rgb(61, 37, 105) 0%, rgba(255, 0, 230, 0.06) 100%);
+    background: linear-gradient(90deg, rgba(112, 0, 255, 0.29) 0%, rgba(255, 0, 230, 0.06) 100%);
     padding: 16px;
     
 }
@@ -125,7 +133,9 @@
 .modal-button-long {
     width: 100%;
     min-height: 48px;
-    padding: 12px 0;
+    padding: 12px 8px;
+    margin-bottom: 8px;
+    margin-top: 8px;
     background-color: orange;
     color: white;
     font-weight: normal;
@@ -214,6 +224,11 @@
     margin-bottom: 4px;
 }
 
+.frens-button-info {
+    background: linear-gradient(90deg, #FB4FFF 0%, #25B1FF 100%);
+    box-shadow: 0px 0px 16px rgb(48, 165, 255);
+}
+
 /* Shop modal */
 
 .shop-balance {
@@ -240,9 +255,51 @@
     border-radius: 8px;
 }
 
+.shop-special-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-spcial-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.shop-special {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    gap: 8px;
+}
+
+.shop-special-name {
+    font-size: 13px;
+    font-weight: bold;
+}
+
 .shop-upgrade-img {
     width: 24px;
     height: 24px;
+}
+
+.shop-upgrade-divider {
+    height: 10px;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.shop-upgrade-description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    font-weight: bold;
 }
 
 .shop-upgrade-icon {
@@ -292,13 +349,9 @@
 .team-button-orange {
     background: rgba(255, 149, 51, 1);
     box-shadow: 0px 0px 16px rgba(255, 149, 51, 1);
-    margin-bottom: 8px;
-    margin-top: 8px;
 }
 
 .team-button-purple {
     background: linear-gradient(90deg, #FB4FFF 0%, #25B1FF 100%);
     box-shadow: 0px 0px 16px rgb(48, 165, 255);
-    margin-bottom: 8px;
-    margin-top: 8px;
 }

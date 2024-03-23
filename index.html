@@ -75,8 +75,8 @@
                     <img src="images/coin.png" class="modal-img" draggable="false">
                     <h2 class="modal-title">Easiest <img src="images/coin.png" class="coin-icon" alt="Coin-icon"> in your life</h2>
                 </div>
+                <p class="modal-section-title">Common Tasks 0/12</p>
                 <div class="task-section">
-                    <p class="task-section-title">Common Tasks 0/12</p>
                     <div class="task-blocks-container">
                         <div class="modal-block task-block">
                             <div class="task">
@@ -231,6 +231,7 @@
                             <div>+25,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"> *each friend</div>
                         </div>
                     </div>
+                    <button class="modal-button-long frens-button-info">More info</button>
                 </div>
                 <div class="modal-block">
                     <div class="modal-subblock">
@@ -280,40 +281,61 @@
                     </div>
                     <div class="modal-title">SHOP</div>
                 </div>
+                <div class="modal-section-title">Specials</div>
+                <div class="shop-spcial-container">
+                    <div class="modal-block shop-special">
+                        <div class="shop-special-name">🚀 Coin multiplier</div>
+                        <div>
+                            <div>1 Available</div>
+                        </div>
+                    </div>
+                    <div class="modal-block shop-special">
+                        <div class="shop-special-name">🔋 Full Eneregy</div>
+                        <div>
+                            <div>1 Available</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="modal-section-title">Upgrades</p>
                 <div class="modal-block">
-                    <div class="modal-subblock">
+                    <div id="upgrade-multitap" class="modal-subblock">
                         <div class="shop-upgrade-img-case">
                             <div class="shop-upgrade-icon">👆</div>
                         </div>
                         <div>
                             <div class="shop-upgrade-name">Multitap - Fastest hand in the Wild West</div>
-                            <div class="shop-upgrade-price">1,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"> / 0 lvl</div>
+                            <div class="shop-upgrade-description">
+                                <div id="shop-upgrade-level">Level: <span>1</span></div>
+                                <div id="shop-upgrade-cost">Cost: <span>1000</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                            </div>
                         </div>
-                        <button class="modal-button-arrow">›</button>
+                        <button class="modal-button-arrow" onclick="upgrade('multitap')">›</button>
                     </div>
-                </div>
-                <div class="modal-block">
-                    <div class="modal-subblock">
+                    <div id="upgrade-rechargingSpeed" class="modal-subblock">
                         <div class="shop-upgrade-img-case">
                             <div class="shop-upgrade-icon">⚡️</div>
                         </div>
                         <div>
                             <div class="shop-upgrade-name">️Recharging speed - Your girl dreams about it  </div>
-                            <div class="shop-upgrade-price">1,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"> / 0 lvl</div>
+                            <div class="shop-upgrade-description">
+                                <div id="shop-upgrade-level">Level: <span>1</span></div>
+                                <div id="shop-upgrade-cost">Cost: <span>1000</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                            </div>
                         </div>
-                        <button class="modal-button-arrow">›</button>
+                        <button class="modal-button-arrow" onclick="upgrade('rechargingSpeed')">›</button>
                     </div>
-                </div>
-                <div class="modal-block">
-                    <div class="modal-subblock">
+                    <div id="upgrade-energyLimit" class="modal-subblock">
                         <div class="shop-upgrade-img-case">
                             <div class="shop-upgrade-icon">🔋</div>
                         </div>
                         <div>
                             <div class="shop-upgrade-name">Energy limit - Not coffee</div>
-                            <div class="shop-upgrade-price">1,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"> / 0 lvl</div>
+                            <div class="shop-upgrade-description">
+                                <div id="shop-upgrade-level">Level: <span>1</span></div>
+                                <div id="shop-upgrade-cost">Cost: <span>1000</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                            </div>
                         </div>
-                        <button class="modal-button-arrow">›</button>
+                        <button class="modal-button-arrow" onclick="upgrade('energyLimit')">›</button>
                     </div>
                 </div>
             </div>

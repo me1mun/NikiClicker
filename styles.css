@@ -52,7 +52,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;;
     align-items: center;
 }
 
@@ -104,8 +104,8 @@ body {
 
 .play-zone {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 92%;
+    aspect-ratio : 1 / 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,7 +116,7 @@ body {
     display: none;
     position: absolute;
     aspect-ratio : 1 / 1;
-    width: 25%;
+    width: 20%;
     max-width: 92px;
     cursor: pointer;
     transform: translate(-50%, -50%);
@@ -155,7 +155,7 @@ body {
 
 
 .gameplay-coin {
-    width: 75%;
+    width: 60%;
     height: auto;
 }
 
