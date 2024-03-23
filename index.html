@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="modal.css">
-    <link rel="stylesheet" href="tasks.css">
-    <link rel="stylesheet" href="frens.css">
-    <link rel="stylesheet" href="shop.css">
 </head>
 <body>
     <div class="container">
@@ -33,7 +30,11 @@
                 <div class="gameplay-coin">
                     <img id="gameplay-coin" src="images/coin.png" alt="Coin" draggable="false" onmousedown="clickCoin()">
                 </div>
+                <div id="bonus" class="bonus">
+                    <img src="images/pets/pet_dog.png">
+                </div>
             </div>
+            
             <div class="energy-wrapper">
                 <div class="energy-icon">🔋</div>
                 <div class="energy-counter">100</div>
@@ -362,6 +363,8 @@
         </div>
     </div>
 
+    <script src="appInit.js"></script>
+    <script src="interface.js"></script>
     <script src="gameplay.js"></script>
 
 </body>

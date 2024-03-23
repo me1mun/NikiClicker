@@ -3,7 +3,6 @@ let energyMax = 1000;
 let energy = energyMax;
 
 initializeProfile('skvortsovddd', 1, 992, 1000);
-disableContextMenu();
 gameplayInit();
 
 function initializeProfile(playerName, leagueNumber, coinCount, energyCount) {
@@ -39,9 +38,6 @@ function gameplayInit() {
         var containerRect = coinImage.getBoundingClientRect();
         var centerX = (event.clientX - containerRect.left) / containerRect.width * 2 - 1;
         var centerY = (event.clientY - containerRect.top) / containerRect.height * 2 - 1;
-        
-        console.log("Distance from center to cursor (X): " + centerX);
-        console.log("Distance from center to cursor (Y): " + centerY);
 
         var rotateX = -centerY * 20;
         var rotateY = centerX * 20;
@@ -53,27 +49,39 @@ function gameplayInit() {
     });
 
     coinImage.addEventListener('transitionend', function() {
-        coinImage.style.transition = ""; // Сбрасываем анимацию
-        coinImage.style.transform = ""; // Возвращаем монету в исходное положение
+        coinImage.style.transition = "";
+        coinImage.style.transform = "";
     }, { once: false });
 }
 
 function clickCoin() {
     let coinsEarned = Math.floor(Math.random() * 5) + 1;
 
-    if (coinsEarned > energy) {
-        coinsEarned = energy;
-    }
+    earnCoins(coinsEarned);
+}
 
-    coins += coinsEarned;
-    energy -= coinsEarned;
-    
-    if (coinsEarned > 0) {
-        showIncome(coinsEarned);
-        updateBalance();
-        updateEnergy()
-        updateUIBackground();
+function earnCoins(value) {
+    if (value > energy) {
+        value = energy;
     }
+    
+    if (value > 0) {
+        editBalance(value);
+        editEnergy(-value);
+        showIncome(value);
+    }
+}
+
+function editBalance(value) {
+    coins += value;
+
+    updateBalance();
+}
+
+function editEnergy(value) {
+    energy += value;
+
+    updateEnergy();
 }
 
 function showIncome(income) {
@@ -114,48 +122,6 @@ function updateBalance() {
     });
 }
 
-function updateUIBackground() {
-    if (coins < 1000) {
-        
-    } else {
-        
-    }
-}
-
-function openModal(modalId) {
-    var modal = document.getElementById(modalId);
-    modal.style.display = "block";
-
-    setTimeout(function() {
-        modal.style.backgroundColor = "rgba(0, 0, 0, 0.75)";
-        modal.getElementsByClassName('modal-container')[0].style.bottom = "0";
-    }, 50);
-}
-
-function closeModal(modalId) {
-    var modal = document.getElementById(modalId);
-    var modalContent = modal.getElementsByClassName('modal-container')[0];
-
-    modalContent.style.bottom = "-100%";
-    modal.style.backgroundColor = "rgba(0, 0, 0, 0)";
-
-    modalContent.addEventListener("transitionend", function() {
-        modalContent.removeEventListener("transitionend", arguments.callee);
-        
-        modal.style.display = "none";
-    });
-}
-
-function disableContextMenu() {
-    var images = document.querySelectorAll('img');
-
-    images.forEach(function(image) {
-        image.addEventListener('contextmenu', function(event) {
-            event.preventDefault();
-        });
-    });
-}
-
 function flipCoin() {
     let coinElement = document.querySelector('.gameplay-coin');
     let angle = 0;
@@ -169,7 +135,69 @@ function flipCoin() {
 
 setInterval(function() {
     if (energy < energyMax) {
-        energy += 1;
-        updateEnergy();
+        editEnergy(1);
     }
 }, 1000);
+
+const bonuses = [
+    { image: 'images/pets/pet_dog.png', points: 10, chance: 0.19 },
+    { image: 'images/pets/pet_cat.png', points: 14, chance: 0.17 },
+    { image: 'images/pets/pet_monkey.png', points: 16, chance: 0.15 },
+    { image: 'images/pets/pet_bear.png', points: 18, chance: 0.13 },
+    { image: 'images/pets/pet_shiba.png', points: 20, chance: 0.11 },
+    { image: 'images/pets/pet_frog.png', points: 22, chance: 0.09 },
+    { image: 'images/pets/pet_pig.png', points: 24, chance: 0.06 },
+    { image: 'images/pets/pet_pinguin.png', points: 26, chance: 0.04 },
+    { image: 'images/pets/pet_shark.png', points: 28, chance: 0.03 },
+    { image: 'images/pets/pet_sheep.png', points: 30, chance: 0.02 },
+    { image: 'images/pets/pet_niki.png', points: 100, chance: 0.01 }
+];
+
+function getRandomBonus() {
+    const random = Math.random();
+    let cumulativeChance = 0;
+
+    for (const bonus of bonuses) {
+        cumulativeChance += bonus.chance;
+        if (random <= cumulativeChance) {
+            return bonus;
+        }
+    }
+}
+
+function displayBonus() {
+    const bonus = getRandomBonus();
+    const bonusElement = document.getElementById('bonus');
+    const imgElement = bonusElement.querySelector('img');
+    imgElement.src = bonus.image;
+
+    bonusElement.style.display = 'block';
+    bonusElement.dataset.points = bonus.points;
+
+    const randomX = Math.random() * 80 + 10;
+    const randomY = Math.random() * 80 + 10;
+
+    bonusElement.style.left = randomX + '%';
+    bonusElement.style.top = randomY + '%';
+}
+
+
+
+function handleBonusClick() {
+    if (energy > 0) {
+        const bonusElement = document.getElementById('bonus');
+        const bonusCoins = parseInt(bonusElement.dataset.points);
+        const min = bonusCoins * 0.5;
+        const max = bonusCoins * 1.5;
+        const randomBonus = Math.floor(Math.random() * (max - min + 1)) + min;
+        earnCoins(randomBonus);
+
+        bonusElement.style.display = 'none';
+
+        setTimeout(displayBonus, 1000);
+    }
+}
+
+document.getElementById('bonus').addEventListener('click', handleBonusClick);
+
+setTimeout(displayBonus, 1000);

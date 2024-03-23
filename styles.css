@@ -103,12 +103,42 @@ body {
 }
 
 .play-zone {
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.bonus {
+    display: none;
+    position: absolute;
+    aspect-ratio : 1 / 1;
+    width: 25%;
+    max-width: 92px;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    animation: scaleUp 0.25s ease-in-out forwards;
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    90% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.bonus img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .income {
@@ -127,7 +157,6 @@ body {
 .gameplay-coin {
     width: 75%;
     height: auto;
-    
 }
 
 .gameplay-coin img {
