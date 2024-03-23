@@ -194,10 +194,10 @@ function handlePetClick() {
 
         petElement.style.display = 'none';
 
-        setTimeout(displayPet, 1000);
+        setTimeout(displayPet, 20000);
     }
 }
 
 document.getElementById('pet').addEventListener('click', handlePetClick);
 
-setTimeout(displayPet, 1000);
+setTimeout(displayPet, 10000);
