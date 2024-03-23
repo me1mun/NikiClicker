@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="player-info">
+            <div class="player-info" onclick="openModal('teamModal')">
                 <img src="images/playerPhoto.jpg" alt="Photo" class="player-photo" draggable="false">
                 <div class="task-text">
                     <div class="player-name">skvortsovddd</div>
@@ -67,113 +67,113 @@
         </footer>
     </div>
     <div id="tasksModal" class="modal">
-        <span class="close" onclick="closeModal('tasksModal')">&times;</span>
-        <div class="modal-content">
-            <img src="images/coin.png" class="modal-img" draggable="false">
-            <h2 class="modal-title">Easiest <img src="images/coin.png" class="coin-icon" alt="Coin-icon"> in your life</h2>
-        <div class="task-section">
-            <p class="task-section-title">Common Tasks 0/12</p>
-            <div class="task-blocks-container">
-                <div class="task-block">
-                    <div class="task">
-                        <div class="task-icon">📸</div>
-                        <div class="task-text">
-                            <div class="task-title">Photo of your pet</div>
-                            <div class="task-prize">+ 1,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+        <div class="modal-container">
+            <span class="close" onclick="closeModal('tasksModal')">&times;</span>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="images/coin.png" class="modal-img" draggable="false">
+                    <h2 class="modal-title">Easiest <img src="images/coin.png" class="coin-icon" alt="Coin-icon"> in your life</h2>
+                </div>
+                <div class="task-section">
+                    <p class="task-section-title">Common Tasks 0/12</p>
+                    <div class="task-blocks-container">
+                        <div class="modal-block task-block">
+                            <div class="task">
+                                <div class="task-icon">📸</div>
+                                <div class="task-text">
+                                    <div class="task-title">Photo of your pet</div>
+                                    <div class="task-prize">+ 1,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                                </div>
+                                <button class="modal-button-arrow">›</button>
+                            </div>
+                            <div class="task">
+                                <div class="task-icon">😂</div>
+                                <div class="task-text">
+                                    <div class="task-title">Create a meme with Nicky</div>
+                                    <div class="task-prize">+ 1,500<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                                </div>
+                                <button class="modal-button-arrow">›</button>
+                            </div>
+                            <div class="task">
+                                <div class="task-icon">👫</div>
+                                <div class="task-text">
+                                    <div class="task-title">Invite a friend to the bot</div>
+                                    <div class="task-prize">+ 2,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                                </div>
+                                <button class="modal-button-arrow">›</button>
+                            </div>
+                            <div class="task">
+                                <div class="task-icon">📷</div>
+                                <div class="task-text">
+                                    <div class="task-title">Subscribe on Instagram</div>
+                                    <div class="task-prize">+ 2,500<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                                </div>
+                                <button class="modal-button-arrow">›</button>
+                            </div>
                         </div>
-                        <button class="modal-button-arrow">›</button>
-                    </div>
-                    <div class="task">
-                        <div class="task-icon">😂</div>
-                        <div class="task-text">
-                            <div class="task-title">Create a meme with Nicky</div>
-                            <div class="task-prize">+ 1,500<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                        <div class="modal-block task-block">
+                            <div class="task">
+                                <div class="task-icon">📸</div>
+                                <div class="task-text">
+                                    <div class="task-title">Photo of your pet</div>
+                                    <div class="task-prize">+ 1,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                                </div>
+                                <button class="modal-button-arrow">›</button>
+                            </div>
+                            <div class="task">
+                                <div class="task-icon">😂</div>
+                                <div class="task-text">
+                                    <div class="task-title">Create a meme with Nicky</div>
+                                    <div class="task-prize">+ 1,500<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                                </div>
+                                <button class="modal-button-arrow">›</button>
+                            </div>
+                            <div class="task">
+                                <div class="task-icon">👫</div>
+                                <div class="task-text">
+                                    <div class="task-title">Invite a friend to the bot</div>
+                                    <div class="task-prize">+ 2,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                                </div>
+                                <button class="modal-button-arrow">›</button>
+                            </div>
+                            <div class="task">
+                                <div class="task-icon">📷</div>
+                                <div class="task-text">
+                                    <div class="task-title">Subscribe on Instagram</div>
+                                    <div class="task-prize">+ 2,500<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                                </div>
+                                <button class="modal-button-arrow">›</button>
+                            </div>
                         </div>
-                        <button class="modal-button-arrow">›</button>
-                    </div>
-                    <div class="task">
-                        <div class="task-icon">👫</div>
-                        <div class="task-text">
-                            <div class="task-title">Invite a friend to the bot</div>
-                            <div class="task-prize">+ 2,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
-                        </div>
-                        <button class="modal-button-arrow">›</button>
-                    </div>
-                    <div class="task">
-                        <div class="task-icon">📷</div>
-                        <div class="task-text">
-                            <div class="task-title">Subscribe on Instagram</div>
-                            <div class="task-prize">+ 2,500<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
-                        </div>
-                        <button class="modal-button-arrow">›</button>
                     </div>
                 </div>
-                <div class="task-block">
-                    <div class="task">
-                        <div class="task-icon">📸</div>
-                        <div class="task-text">
-                            <div class="task-title">Photo of your pet</div>
-                            <div class="task-prize">+ 1,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
-                        </div>
-                        <button class="modal-button-arrow">›</button>
-                    </div>
-                    <div class="task">
-                        <div class="task-icon">😂</div>
-                        <div class="task-text">
-                            <div class="task-title">Create a meme with Nicky</div>
-                            <div class="task-prize">+ 1,500<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
-                        </div>
-                        <button class="modal-button-arrow">›</button>
-                    </div>
-                    <div class="task">
-                        <div class="task-icon">👫</div>
-                        <div class="task-text">
-                            <div class="task-title">Invite a friend to the bot</div>
-                            <div class="task-prize">+ 2,000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
-                        </div>
-                        <button class="modal-button-arrow">›</button>
-                    </div>
-                    <div class="task">
-                        <div class="task-icon">📷</div>
-                        <div class="task-text">
-                            <div class="task-title">Subscribe on Instagram</div>
-                            <div class="task-prize">+ 2,500<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
-                        </div>
-                        <button class="modal-button-arrow">›</button>
-                    </div>
+
+                <div class="modal-block">
+                    <div class="task-section-title">🥈SILVER LEAGUE</div>
+                    <div>Comming soon</div>
+                </div>
+
+                <div class="modal-block">
+                    <div class="task-section-title">🥇GOLD LEAGUE</div>
+                    <div>Comming soon</div>
+                </div>
+
+                <div class="modal-block">
+                    <div class="task-section-title">💎 DIAMOND LEAGUE</div>
+                    <div>Comming soon</div>
                 </div>
             </div>
-        </div>
-
-        <div class="task-section">
-            <div class="task-block">
-                <div class="task-section-title">🥈SILVER LEAGUE</div>
-                <div>Comming soon</div>
-            </div>
-        </div>
-
-        <div class="task-section">
-            <div class="task-block">
-                <div class="task-section-title">🥇GOLD LEAGUE</div>
-                <div>Comming soon</div>
-            </div>
-        </div>
-
-        <div class="task-section">
-            <div class="task-block">
-                <div class="task-section-title">💎 DIAMOND LEAGUE</div>
-                <div>Comming soon</div>
-            </div>
-        </div>
         </div>
     </div>
 
     <div id="frensModal" class="modal">
-        <span class="close" onclick="closeModal('frensModal')">&times;</span>
-        <div class="modal-content">
-            <img src="images/frens/gift.png" class="modal-img" draggable="false">
-            <h2 class="modal-title">FRIENDS</h2>
-            <div class="modal-container">
+        <div class="modal-container">
+            <span class="close" onclick="closeModal('frensModal')">&times;</span>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="images/frens/gift.png" class="modal-img" draggable="false">
+                    <h2 class="modal-title">FRIENDS</h2>
+                </div>
                 <div class="modal-block">
                     <div class="modal-subblock">
                         <div class="frens-coins-earned">+1000<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
@@ -234,14 +234,17 @@
     </div>
 
     <div id="shopModal" class="modal">
-        <span class="close" onclick="closeModal('shopModal')">&times;</span>
-        <div class="modal-content">
-            <div class="shop-balance">
-                <img src="images/coin.png" class="stats-coin" alt="Coin-icon">
-                <div id="balance" class="coin-count">0</div>
-            </div>
-            <div class="modal-title">SHOP</div>
-            <div class="modal-container">
+        <div class="modal-container">
+            <span class="close" onclick="closeModal('shopModal')">&times;</span>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <div class="modal-subtitle">Your balance:</div> -->
+                    <div class="shop-balance">
+                        <img src="images/coin.png" class="stats-coin" alt="Coin-icon">
+                        <div id="balance" class="coin-count">0</div>
+                    </div>
+                    <div class="modal-title">SHOP</div>
+                </div>
                 <div class="modal-block">
                     <div class="modal-subblock">
                         <div class="shop-upgrade-img-case">
@@ -253,6 +256,8 @@
                         </div>
                         <button class="modal-button-arrow">›</button>
                     </div>
+                </div>
+                <div class="modal-block">
                     <div class="modal-subblock">
                         <div class="shop-upgrade-img-case">
                             <div class="shop-upgrade-icon">⚡️</div>
@@ -263,6 +268,8 @@
                         </div>
                         <button class="modal-button-arrow">›</button>
                     </div>
+                </div>
+                <div class="modal-block">
                     <div class="modal-subblock">
                         <div class="shop-upgrade-img-case">
                             <div class="shop-upgrade-icon">🔋</div>
@@ -273,6 +280,49 @@
                         </div>
                         <button class="modal-button-arrow">›</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="teamModal" class="modal">
+        <div class="modal-container">
+            <span class="close" onclick="closeModal('teamModal')">&times;</span>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="images/celebration.png" class="modal-img" draggable="false">
+                    <h2 class="modal-title">How TEAM works?</h2>
+                    <div class="modal-subtitle">Choose team and win tournaments</div>
+                </div>
+                <button class="modal-button-long team-button-orange">Create your Team</button>
+                <button class="modal-button-long team-button-purple">Join Team</button>
+                <div class="modal-block team-list">
+                    <!-- Example team item -->
+                    <div class="team-item">
+                        <img src="images/teams/teamlogo_1.jpg" class="team-logo">
+                        <div class="team-details">
+                            <div class="team-name">Niki Team</div>
+                            <div class="team-league">💎 Diamond</div>
+                        </div>
+                        <button class="modal-button-arrow">›</button>
+                    </div>
+                    <div class="team-item">
+                        <img src="images/teams/teamlogo_2.jpg" class="team-logo">
+                        <div class="team-details">
+                            <div class="team-name">Crypto</div>
+                            <div class="team-league">💎 Diamond</div>
+                        </div>
+                        <button class="modal-button-arrow">›</button>
+                    </div>
+                    <div class="team-item">
+                        <img src="images/teams/teamlogo_3.jpg" class="team-logo">
+                        <div class="team-details">
+                            <div class="team-name">Logy</div>
+                            <div class="team-league">🏆 Gold</div>
+                        </div>
+                        <button class="modal-button-arrow">›</button>
+                    </div>
+                    <!-- Repeat for each team -->
                 </div>
             </div>
         </div>

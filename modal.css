@@ -12,6 +12,20 @@
     font-size: 12px;
 }
 
+.modal-container {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center bottom, rgb(118, 58, 215), rgb(23, 23, 23) 50%);
+    transition: bottom 0.25s ease;
+    padding: 20px;
+    border-radius: 0px 0px 0px 0px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
 .modal-button-arrow {
     width: 32px;
     height: 32px;
@@ -28,6 +42,13 @@
     transform: scale(0.75);
 }
 
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
 .modal-img {
     display: block;
     width: 50%;
@@ -41,27 +62,21 @@
     text-align: center;
     font-weight: bold;
     font-size: 22px;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
+}
+
+.modal-subtitle {
+    text-align: center;
+    font-weight: normal;
+    font-size: 14px;
 }
 
 .modal-content {
-    position: absolute;
-    bottom: -80%;
-    left: 0;
-    width: 100%;
-    height: 80%;
-    background: radial-gradient(circle at center bottom, rgb(118, 58, 215), rgb(30, 30, 30) 50%);
-    transition: bottom 0.25s ease;
-    padding: 20px;
-    border-radius: 20px 20px 0px 0px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-
-.modal-container {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    max-width: 480px;
+    margin: 0 auto;
 }
 
 .modal-block {
@@ -72,8 +87,9 @@
     width: 100%;
     min-height: 64px;
     border-radius: 10px;
-    background: linear-gradient(90deg, rgba(112, 0, 255, 0.29) 0%, rgba(255, 0, 230, 0.06) 100%);
+    background: linear-gradient(90deg, rgb(61, 37, 105) 0%, rgba(255, 0, 230, 0.06) 100%);
     padding: 16px;
+    
 }
 
 .modal-block-title {
@@ -104,4 +120,68 @@
     color: rgba(255, 255, 255, 0.25);
     text-decoration: none;
     cursor: pointer;
+}
+
+.modal-button-long {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 0;
+    background-color: orange;
+    color: white;
+    font-weight: normal;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Team modal */
+
+.team-list {
+    overflow-y: auto;
+    max-height: 360px;
+}
+
+.team-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    border-radius: 8px;
+}
+
+.team-logo {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 10%;
+    object-fit: cover;
+}
+
+.team-details {
+    flex: 1;
+}
+
+.team-name {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.team-league {
+    color: lightgray;
+}
+
+.team-button-orange {
+    background: rgba(255, 149, 51, 1);
+    box-shadow: 0px 0px 16px rgba(255, 149, 51, 1);
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.team-button-purple {
+    background: linear-gradient(90deg, #FB4FFF 0%, #25B1FF 100%);
+    box-shadow: 0px 0px 16px rgb(48, 165, 255);
+    margin-bottom: 8px;
+    margin-top: 8px;
 }

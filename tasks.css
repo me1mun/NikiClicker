@@ -1,5 +1,4 @@
 .task-section {
-    margin-top: 32px;
     width: 100%;
 }
 
@@ -20,15 +19,13 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    max-width: 360px;
-    border-radius: 10px;
-    background: linear-gradient(90deg, rgba(112, 0, 255, 0.29) 0%, rgba(255, 0, 230, 0.06) 100%);
-    padding: 16px;
+    max-width: 320px;
 }
 
 .task {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .task-icon {
