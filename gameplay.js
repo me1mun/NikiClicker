@@ -140,17 +140,17 @@ setInterval(function() {
 }, 1000);
 
 const pets = [
-    { image: 'images/pets/pet_dog.png', points: 10, chance: 0.19 },
-    { image: 'images/pets/pet_cat.png', points: 14, chance: 0.17 },
-    { image: 'images/pets/pet_monkey.png', points: 16, chance: 0.15 },
-    { image: 'images/pets/pet_bear.png', points: 18, chance: 0.13 },
-    { image: 'images/pets/pet_shiba.png', points: 20, chance: 0.11 },
-    { image: 'images/pets/pet_frog.png', points: 22, chance: 0.09 },
-    { image: 'images/pets/pet_pig.png', points: 24, chance: 0.06 },
-    { image: 'images/pets/pet_pinguin.png', points: 26, chance: 0.04 },
-    { image: 'images/pets/pet_shark.png', points: 28, chance: 0.03 },
-    { image: 'images/pets/pet_sheep.png', points: 30, chance: 0.02 },
-    { image: 'images/pets/pet_niki.png', points: 100, chance: 0.01 }
+    { image: 'images/pets/pet_dog.png', coins: 10, chance: 0.19 },
+    { image: 'images/pets/pet_cat.png', coins: 14, chance: 0.17 },
+    { image: 'images/pets/pet_monkey.png', coins: 16, chance: 0.15 },
+    { image: 'images/pets/pet_bear.png', coins: 18, chance: 0.13 },
+    { image: 'images/pets/pet_shiba.png', coins: 20, chance: 0.11 },
+    { image: 'images/pets/pet_frog.png', coins: 22, chance: 0.09 },
+    { image: 'images/pets/pet_pig.png', coins: 24, chance: 0.06 },
+    { image: 'images/pets/pet_pinguin.png', coins: 26, chance: 0.04 },
+    { image: 'images/pets/pet_shark.png', coins: 28, chance: 0.03 },
+    { image: 'images/pets/pet_sheep.png', coins: 30, chance: 0.02 },
+    { image: 'images/pets/pet_niki.png', coins: 100, chance: 0.01 }
 ];
 
 function getRandomPet() {
@@ -172,7 +172,7 @@ function displayPet() {
     imgElement.src = pet.image;
 
     petElement.style.display = 'block';
-    petElement.dataset.points = pet.points;
+    petElement.dataset.coins = pet.coins;
 
     const randomX = Math.random() * 80 + 10;
     const randomY = Math.random() * 80 + 10;
@@ -186,7 +186,7 @@ function displayPet() {
 function handlePetClick() {
     if (energy > 0) {
         const petElement = document.getElementById('pet');
-        const petCoins = parseInt(petElement.dataset.points);
+        const petCoins = parseInt(petElement.dataset.coins);
         const min = petCoins * 0.5;
         const max = petCoins * 1.5;
         const randomBonus = Math.floor(Math.random() * (max - min + 1)) + min;
