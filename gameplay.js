@@ -43,17 +43,17 @@ function gameplayInit() {
     ];
 
     pets = [
-        { image: 'images/pets/pet_dog.png', coins: 10, chance: 0.19 },
-        { image: 'images/pets/pet_cat.png', coins: 14, chance: 0.17 },
-        { image: 'images/pets/pet_monkey.png', coins: 16, chance: 0.15 },
-        { image: 'images/pets/pet_bear.png', coins: 18, chance: 0.13 },
-        { image: 'images/pets/pet_shiba.png', coins: 20, chance: 0.11 },
-        { image: 'images/pets/pet_frog.png', coins: 22, chance: 0.09 },
-        { image: 'images/pets/pet_pig.png', coins: 24, chance: 0.06 },
-        { image: 'images/pets/pet_pinguin.png', coins: 26, chance: 0.04 },
-        { image: 'images/pets/pet_shark.png', coins: 28, chance: 0.03 },
-        { image: 'images/pets/pet_sheep.png', coins: 30, chance: 0.02 },
-        { image: 'images/pets/pet_niki.png', coins: 100, chance: 0.01 }
+        { image: 'images/pets/pet_dog.png', coins: 10, chance: 0.15 },
+        { image: 'images/pets/pet_cat.png', coins: 14, chance: 0.15 },
+        { image: 'images/pets/pet_monkey.png', coins: 16, chance: 0.1 },
+        { image: 'images/pets/pet_bear.png', coins: 18, chance: 0.1 },
+        { image: 'images/pets/pet_shiba.png', coins: 20, chance: 0.1 },
+        { image: 'images/pets/pet_frog.png', coins: 22, chance: 0.1 },
+        { image: 'images/pets/pet_pig.png', coins: 24, chance: 0.1 },
+        { image: 'images/pets/pet_pinguin.png', coins: 26, chance: 0.1 },
+        { image: 'images/pets/pet_shark.png', coins: 28, chance: 0.04 },
+        { image: 'images/pets/pet_sheep.png', coins: 30, chance: 0.04 },
+        { image: 'images/pets/pet_niki.png', coins: 200, chance: 0.02 }
     ];
 
     coins = 99990;
@@ -206,7 +206,12 @@ function getRandomPet() {
     }
 }
 
+let petTimer;
+let petIsActive = false;
+
 function displayPet() {
+    petIsActive = true;
+
     const pet = getRandomPet();
     const petElement = document.getElementById('pet');
     const imgElement = petElement.querySelector('img');
@@ -225,10 +230,16 @@ function displayPet() {
 
     petElement.style.left = randomX + '%';
     petElement.style.top = randomY + '%';
+
+    petTimer = setTimeout(() => {
+        respawnPet(petElement);
+    }, 2500);
 }
 
 function handlePetClick() {
-    if (energy > 0) {
+    if (petIsActive && energy > 0) {
+        petIsActive = false;
+
         const petElement = document.getElementById('pet');
         const petCoins = parseInt(petElement.dataset.coins);
         const min = petCoins * 0.5;
@@ -236,15 +247,25 @@ function handlePetClick() {
         const randomBonus = Math.floor(Math.random() * (max - min + 1)) + min;
         earnCoins(randomBonus);
 
-        petElement.style.display = 'none';
-
-        setTimeout(displayPet, 2000);
+        clearTimeout(petTimer);
+        respawnPet(petElement);
     }
+}
+
+function respawnPet(petElement) {
+    petElement.style.animation = 'scaleDown 0.2s forwards';
+    let spawnDelay = Math.floor(15000 + Math.random() * 5000);
+
+    setTimeout(() => {
+        petElement.style.animation = '';
+        petElement.style.display = 'none';
+        setTimeout(displayPet, spawnDelay);
+    }, 200);
 }
 
 document.getElementById('pet').addEventListener('click', handlePetClick);
 
-setTimeout(displayPet, 1000);
+setTimeout(displayPet, 5000);
 
 
 
