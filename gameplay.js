@@ -6,8 +6,10 @@ let specialPrice = 1000;
 const specialElement = document.getElementById('special');
 const petElement = document.getElementById('pet');
 
-let specialMode = false;
+let activeSpecial = "";
 let specialTimer;
+let specialMode = false;
+let specialModeTimer;
 
 let coins = 0;
 let energyMax = 1000;
@@ -345,58 +347,65 @@ function refreshSpecialUI() {
 let specialIsActivated = false;
 
 function activateSpecial(specialName) {
-    closeModal("shopModal");
-
     const special = specials.find(special => special.name === specialName);
 
-    if (special.available > 0 || coins >= specialPrice) {
-        if (special.available > 0) {
-            special.available--;
-        } else {
-            pay(specialPrice);
+    if (activeSpecial == "") {
+        if ( special.available > 0 || coins >= specialPrice) {
+            if (special.available > 0) {
+                special.available--;
+            } else {
+                pay(specialPrice);
+            }
+
+            closeModal("shopModal");
+
+            specialIsActivated = false;
+            activeSpecial = specialName;
+
+            clearTimeout(specialTimer);
+            specialTimer = setTimeout(() => {
+                removeSpecial();
+            }, 3000);
+            
+            const specialElement = document.getElementById('special');
+            const imgElement = specialElement.querySelector('img');
+            imgElement.src = special.icon;
+
+            specialElement.style.display = 'block';
+            specialElement.dataset.special = special.name;
+
+            const center = { x: 50, y: 50 };
+            const radius = 45;
+
+            const angle = Math.random() * 2 * Math.PI;
+            
+            const randomX = center.x + radius * Math.cos(angle);
+            const randomY = center.y + radius * Math.sin(angle);
+
+            specialElement.style.left = randomX + '%';
+            specialElement.style.top = randomY + '%';
+            
+            refreshSpecialUI();
         }
-
-        specialIsActivated = false;
-        
-        const specialElement = document.getElementById('special');
-        const imgElement = specialElement.querySelector('img');
-        imgElement.src = special.icon;
-
-        specialElement.style.display = 'block';
-        specialElement.dataset.special = special.name;
-
-        const center = { x: 50, y: 50 };
-        const radius = 45;
-
-        const angle = Math.random() * 2 * Math.PI;
-        
-        const randomX = center.x + radius * Math.cos(angle);
-        const randomY = center.y + radius * Math.sin(angle);
-
-        specialElement.style.left = randomX + '%';
-        specialElement.style.top = randomY + '%';
-        
-        refreshSpecialUI();
     }
 }
 
 function applySpecialEffects() {
-    specialIsActivated = true;
-
-    removeSpecial();
-
     const specialName = specialElement.dataset.special;
+
+    specialIsActivated = true;
+    removeSpecial();
 
     if (specialName == "fullEnergy")
     {
         editEnergy(energyMax - energy);
     } else if (specialName === "coinMultiplier") {
         specialMode = "multiplier";
-        clearTimeout(specialTimer);
+        clearTimeout(specialModeTimer);
         
         showBackground('backgroundCoinrise');
 
-        specialTimer = setTimeout(() => {
+        specialModeTimer = setTimeout(() => {
             specialMode = "";
 
             hideBackground();
@@ -405,8 +414,9 @@ function applySpecialEffects() {
 }
 
 function removeSpecial() {
-    specialElement.style.animation = 'scaleDown 0.2s forwards';
+    activeSpecial = "";
 
+    specialElement.style.animation = 'scaleDown 0.2s forwards';
     setTimeout(() => {
         specialElement.style.animation = '';
         specialElement.style.display = 'none';
