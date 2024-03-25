@@ -65,7 +65,7 @@ function gameplayInit() {
 
     var coinImage = document.getElementById('gameplay-coin');
 
-    coinImage.addEventListener('mousedown', function (event) {
+    coinImage.addEventListener('touchstart', function (event) {
         var containerRect = coinImage.getBoundingClientRect();
         var centerX = (event.clientX - containerRect.left) / containerRect.width * 2 - 1;
         var centerY = (event.clientY - containerRect.top) / containerRect.height * 2 - 1;
@@ -144,7 +144,7 @@ function showIncome(income) {
     document.body.appendChild(incomeElement);
     
     setTimeout(function() {
-        incomeElement.style.top = (cursorY - 96) + 'px';
+        incomeElement.style.top = (cursorY - 128) + 'px';
     }, 10);
 
     setTimeout(function() {
