@@ -1,18 +1,11 @@
-html {
-    
+* {
     margin: 0;
     padding: 0;
-}
-
-* {
     box-sizing: border-box;
     touch-action: manipulation;
     -webkit-touch-callout: none;
     user-select: none;
-}
 
-* {
-    -webkit-tap-highlight-color: transparent;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -67,6 +60,7 @@ body {
     flex-direction: column;
     justify-content: space-between;;
     align-items: center;
+    z-index: 0;
 }
 
 .main-content {
@@ -137,6 +131,41 @@ body {
     animation: scaleUp 0.25s ease-in-out forwards;
 }
 
+.pet img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.special {
+    display: none;
+    position: absolute;
+    aspect-ratio : 1 / 1;
+    width: 20%;
+    max-width: 92px;
+    left: 50%;
+    top: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    animation: scaleUp 0.25s ease-in-out forwards;
+}
+
+.special img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: shake 0.25s infinite alternate; /* Здесь указывается имя анимации, длительность, повторяемость и вид анимации */
+}
+
+@keyframes shake {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
 @keyframes scaleUp {
     0% {
         transform: translate(-50%, -50%) scale(0);
@@ -156,12 +185,6 @@ body {
     100% {
         transform: translate(-50%, -50%) scale(0);
     }
-}
-
-.pet img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
 }
 
 .income {

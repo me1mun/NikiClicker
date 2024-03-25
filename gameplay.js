@@ -1,6 +1,13 @@
+let background;
+
 let pets, upgrades, specials;
 let specialPrice = 1000;
-let coinMultiplierMode = false;
+
+const specialElement = document.getElementById('special');
+const petElement = document.getElementById('pet');
+
+let specialMode = false;
+let specialTimer;
 
 let coins = 0;
 let energyMax = 1000;
@@ -31,6 +38,8 @@ function setLeague(leagueNumber) {
 }
 
 function gameplayInit() {
+    background = document.getElementById('effectBackground');
+
     upgrades = [
         { name: "multitap", level: 1 },
         { name: "rechargingSpeed", level: 1 },
@@ -38,8 +47,8 @@ function gameplayInit() {
     ];
 
     specials = [
-        { name: "coinMultiplier", available: 1 },
-        { name: "fullEnergy", available: 1 }
+        { name: "coinMultiplier", icon: 'images/specials/rocket.png', available: 1 },
+        { name: "fullEnergy", icon: 'images/specials/energy.png', available: 1 }
     ];
 
     pets = [
@@ -65,7 +74,7 @@ function gameplayInit() {
 
     var coinImage = document.getElementById('gameplay-coin');
 
-    coinImage.addEventListener('touchstart', function (event) {
+    coinImage.addEventListener('mousedown', function (event) {
         var containerRect = coinImage.getBoundingClientRect();
         var centerX = (event.clientX - containerRect.left) / containerRect.width * 2 - 1;
         var centerY = (event.clientY - containerRect.top) / containerRect.height * 2 - 1;
@@ -98,7 +107,7 @@ function pay(value) {
 }
 
 function earnCoins(value) {
-    if (coinMultiplierMode) {
+    if (specialMode == "multiplier") {
         value *= 5;
     }
 
@@ -213,7 +222,6 @@ function displayPet() {
     petIsActive = true;
 
     const pet = getRandomPet();
-    const petElement = document.getElementById('pet');
     const imgElement = petElement.querySelector('img');
     imgElement.src = pet.image;
 
@@ -240,7 +248,6 @@ function handlePetClick() {
     if (petIsActive && energy > 0) {
         petIsActive = false;
 
-        const petElement = document.getElementById('pet');
         const petCoins = parseInt(petElement.dataset.coins);
         const min = petCoins * 0.5;
         const max = petCoins * 1.5;
@@ -248,11 +255,11 @@ function handlePetClick() {
         earnCoins(randomBonus);
 
         clearTimeout(petTimer);
-        respawnPet(petElement);
+        respawnPet();
     }
 }
 
-function respawnPet(petElement) {
+function respawnPet() {
     petElement.style.animation = 'scaleDown 0.2s forwards';
     let spawnDelay = Math.floor(15000 + Math.random() * 5000);
 
@@ -335,35 +342,100 @@ function refreshSpecialUI() {
     });
 }
 
+let specialIsActivated = false;
+
 function activateSpecial(specialName) {
+    closeModal("shopModal");
+
     const special = specials.find(special => special.name === specialName);
 
-    if (special.available > 0) {
-        special.available--;
-        applySpecialEffects(specialName);
-        refreshSpecialUI();
-    } else {
-        if (coins >= specialPrice) {
+    if (special.available > 0 || coins >= specialPrice) {
+        if (special.available > 0) {
+            special.available--;
+        } else {
             pay(specialPrice);
-            applySpecialEffects(specialName);
-            refreshSpecialUI();
         }
+
+        specialIsActivated = false;
+        
+        const specialElement = document.getElementById('special');
+        const imgElement = specialElement.querySelector('img');
+        imgElement.src = special.icon;
+
+        specialElement.style.display = 'block';
+        specialElement.dataset.special = special.name;
+
+        const center = { x: 50, y: 50 };
+        const radius = 45;
+
+        const angle = Math.random() * 2 * Math.PI;
+        
+        const randomX = center.x + radius * Math.cos(angle);
+        const randomY = center.y + radius * Math.sin(angle);
+
+        specialElement.style.left = randomX + '%';
+        specialElement.style.top = randomY + '%';
+        
+        refreshSpecialUI();
     }
 }
 
-function applySpecialEffects(specialName) {
-    closeModal("shopModal");
+function applySpecialEffects() {
+    specialIsActivated = true;
+
+    removeSpecial();
+
+    const specialName = specialElement.dataset.special;
 
     if (specialName == "fullEnergy")
     {
         editEnergy(energyMax - energy);
     } else if (specialName === "coinMultiplier") {
-        coinMultiplierMode = true;
-        document.querySelector('#coinMultiplierGlow').style.opacity = 1;
+        specialMode = "multiplier";
+        clearTimeout(specialTimer);
+        
+        showBackground('backgroundCoinrise');
 
-        setTimeout(() => {
-            coinMultiplierMode = false;
-            document.querySelector('#coinMultiplierGlow').style.opacity = 0;
+        specialTimer = setTimeout(() => {
+            specialMode = "";
+
+            hideBackground();
         }, 10000);
     }
 }
+
+function removeSpecial() {
+    specialElement.style.animation = 'scaleDown 0.2s forwards';
+
+    setTimeout(() => {
+        specialElement.style.animation = '';
+        specialElement.style.display = 'none';
+    }, 200);
+}
+
+function showBackground(backgroundId) {
+    background.style.display = 'block';
+    setTimeout(() => {
+        background.style.opacity = 1;
+    }, 1);
+    
+
+    var backgrounds = background.querySelectorAll('div');
+    backgrounds.forEach(function(bg) {
+        if (bg.id === backgroundId) {
+            bg.style.visibility = 'visible';
+        } else {
+            bg.style.visibility = 'hidden';
+        }
+    });
+}
+
+function hideBackground() {
+    background.style.opacity = 0;
+
+    background.addEventListener('transitionend', function() {
+        background.style.display = 'none';
+    }, { once: true });
+}
+
+document.getElementById('special').addEventListener('click', applySpecialEffects);

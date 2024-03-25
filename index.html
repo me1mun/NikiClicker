@@ -6,10 +6,22 @@
     <title>Clicker Game</title>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="backgrounds.css">
     <link rel="stylesheet" href="modal.css">
 </head>
 <body>
-    <div id="coinMultiplierGlow" class="background-glow"></div>
+    <div id="effectBackground" class="effect-background">
+        <div id="backgroundCoinrise" class="background-coinrise">
+            <span style="--i:16;"></span>
+            <span style="--i:11;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:17;"></span>
+        </div>
+    </div>
     <div class="container">
         <div class="header">
             <div class="player-info" onclick="openModal('teamModal')">
@@ -30,9 +42,13 @@
             <div class="play-zone">
                 <div class="coin-glow"></div>
                 <div class="gameplay-coin">
-                    <img id="gameplay-coin" src="images/coin.png" alt="Coin" draggable="false" touchstart="clickCoin()">
+                    <img id="gameplay-coin" src="images/coin.png" alt="Coin" draggable="false" onmousedown="clickCoin()">
                 </div>
                 <div id="pet" class="pet">
+                    <img src="images/pets/pet_dog.png">
+                </div>
+
+                <div id="special" class="special">
                     <img src="images/pets/pet_dog.png">
                 </div>
             </div>
