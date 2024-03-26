@@ -6,9 +6,9 @@ let specialPrice = 1000;
 const specialElement = document.getElementById('special');
 const petElement = document.getElementById('pet');
 
-let activeSpecial = "";
-let specialTimer;
-let specialMode = false;
+let activeSpecial = { name: 'none', factor: 10};
+let displaySpecial = 'none';
+let specialDislpayTimer;
 let specialModeTimer;
 
 let coins = 0;
@@ -49,8 +49,10 @@ function gameplayInit() {
     ];
 
     specials = [
-        { name: "coinMultiplier", icon: 'images/specials/rocket.png', available: 1 },
-        { name: "fullEnergy", icon: 'images/specials/energy.png', available: 1 }
+        { name: "rocket", icon: 'images/specials/rocket.png', available: 3 },
+        { name: "bomb", icon: 'images/specials/bomb.png', available: 2 },
+        { name: "shuriken", icon: 'images/specials/shuriken.png', available: 1 },
+        { name: "energy", icon: 'images/specials/energy.png', available: 1 }
     ];
 
     pets = [
@@ -109,8 +111,14 @@ function pay(value) {
 }
 
 function earnCoins(value) {
-    if (specialMode == "multiplier") {
-        value *= 5;
+    let isSpecialMode = activeSpecial.name !== "none";
+
+    if (isSpecialMode) {
+        value *= activeSpecial.factor;
+    } else {
+        if (value > energy) {
+            value = energy;
+        }
     }
 
     if (value > energy) {
@@ -119,8 +127,11 @@ function earnCoins(value) {
     
     if (value > 0) {
         editBalance(value);
-        editEnergy(-value);
         showIncome(value);
+
+        if (!isSpecialMode) {
+            editEnergy(-value);
+        }
     }
 }
 
@@ -348,8 +359,8 @@ let specialIsActivated = false;
 
 function activateSpecial(specialName) {
     const special = specials.find(special => special.name === specialName);
-
-    if (activeSpecial == "") {
+    
+    if (activeSpecial.name == 'none' && displaySpecial == 'none') {
         if ( special.available > 0 || coins >= specialPrice) {
             if (special.available > 0) {
                 special.available--;
@@ -360,10 +371,9 @@ function activateSpecial(specialName) {
             closeModal("shopModal");
 
             specialIsActivated = false;
-            activeSpecial = specialName;
 
-            clearTimeout(specialTimer);
-            specialTimer = setTimeout(() => {
+            clearTimeout(specialDislpayTimer);
+            specialDislpayTimer = setTimeout(() => {
                 removeSpecial();
             }, 3000);
             
@@ -396,25 +406,34 @@ function applySpecialEffects() {
     specialIsActivated = true;
     removeSpecial();
 
-    if (specialName == "fullEnergy")
+    if (specialName == "energy")
     {
         editEnergy(energyMax - energy);
-    } else if (specialName === "coinMultiplier") {
-        specialMode = "multiplier";
-        clearTimeout(specialModeTimer);
-        
-        showBackground('backgroundCoinrise');
-
-        specialModeTimer = setTimeout(() => {
-            specialMode = "";
-
-            hideBackground();
-        }, 10000);
+    } else if (specialName === "rocket") {
+        activateSpecialMode(specialName, 10, 10, 'images/specials/rocket.png', 'rgb(242, 137, 10)');
+    } else if (specialName === "bomb") {
+        activateSpecialMode(specialName, 50, 10, 'images/specials/bomb.png', 'rgb(42, 137, 210)');
+    } else if (specialName === "shuriken") {
+        activateSpecialMode(specialName, 100, 10, 'images/specials/shuriken.png', 'rgb(42, 237, 10)');
     }
 }
 
+function activateSpecialMode(specialName, factor, duration, imageUrl, backgroundColor) {
+    
+    activeSpecial.name = specialName;
+    activeSpecial.factor = factor;
+
+    showSpecialBackground(imageUrl, backgroundColor);
+
+    clearTimeout(specialModeTimer);
+    specialModeTimer = setTimeout(() => {
+        activeSpecial.name = 'none';
+        hideSpecialBackground();
+    }, duration * 1000);
+}
+
 function removeSpecial() {
-    activeSpecial = "";
+    displaySpecial = 'none';
 
     specialElement.style.animation = 'scaleDown 0.2s forwards';
     setTimeout(() => {
@@ -423,24 +442,25 @@ function removeSpecial() {
     }, 200);
 }
 
-function showBackground(backgroundId) {
+function showSpecialBackground(imageUrl, backgroundColor) {
+    const backgroundInner = background.querySelector('div');
     background.style.display = 'block';
+    if (backgroundColor) {
+        backgroundInner.style.background = 'radial-gradient(circle at center bottom, ' + backgroundColor + ', rgb(23, 23, 23) 75%)';
+    }
+    if (imageUrl) {
+        const spans = backgroundInner.querySelectorAll('span');
+        spans.forEach(span => {
+            span.style.backgroundImage = `url('${imageUrl}')`;
+        });
+    }
     setTimeout(() => {
         background.style.opacity = 1;
     }, 1);
-    
-
-    var backgrounds = background.querySelectorAll('div');
-    backgrounds.forEach(function(bg) {
-        if (bg.id === backgroundId) {
-            bg.style.visibility = 'visible';
-        } else {
-            bg.style.visibility = 'hidden';
-        }
-    });
 }
 
-function hideBackground() {
+
+function hideSpecialBackground() {
     background.style.opacity = 0;
 
     background.addEventListener('transitionend', function() {

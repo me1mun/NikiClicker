@@ -90,6 +90,7 @@
             <span class="close" onclick="closeModal('tasksModal')">&times;</span>
             <div class="modal-content">
                 <div class="modal-header">
+                    <div class="modal-header-background task-header-background"></div>
                     <img src="images/coin.png" class="modal-img" draggable="false">
                     <h2 class="modal-title">Easiest <img src="images/coin.png" class="coin-icon" alt="Coin-icon"> in your life</h2>
                 </div>
@@ -224,6 +225,7 @@
             <span class="close" onclick="closeModal('frensModal')">&times;</span>
             <div class="modal-content">
                 <div class="modal-header">
+                    <div class="modal-header-background frens-header-background"></div>
                     <img src="images/frens/gift.png" class="modal-img" draggable="false">
                     <h2 class="modal-title">FRIENDS</h2>
                 </div>
@@ -292,7 +294,7 @@
             <span class="close" onclick="closeModal('shopModal')">&times;</span>
             <div class="modal-content">
                 <div class="modal-header">
-                    <!-- <div class="modal-subtitle">Your balance:</div> -->
+                    <div class="modal-header-background shop-header-background"></div>
                     <div class="shop-balance">
                         <img src="images/coin.png" class="stats-coin" alt="Coin-icon">
                         <div id="balance" class="coin-count">0</div>
@@ -301,13 +303,35 @@
                 </div>
                 <div class="modal-section-title">Specials</div>
                 <div class="shop-spcial-container">
-                    <div id="special-coinMultiplier" class="modal-block shop-special" onclick="activateSpecial('coinMultiplier')">
-                        <div class="shop-special-name">🚀 Coin multiplier</div>
+                    <div id="special-rocket" class="modal-block" onclick="activateSpecial('rocket')">
+                        <div class="shop-special-name">
+                            <img src="images/specials/rocket.png" alt="Rocket">
+                            <p>Rocket</p>
+                        </div>
                         <div id="shop-special-count"><span>1</span> Available</div>
                         <div id="shop-special-cost" style="display: none"><span>1</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
                     </div>
-                    <div id="special-fullEnergy" class="modal-block shop-special" onclick="activateSpecial('fullEnergy')">
-                        <div class="shop-special-name">🔋 Full energy</div>
+                    <div id="special-bomb" class="modal-block" onclick="activateSpecial('bomb')">
+                        <div class="shop-special-name">
+                            <img src="images/specials/bomb.png" alt="Bomb">
+                            <p>Bomb</p>
+                        </div>
+                        <div id="shop-special-count"><span>1</span> Available</div>
+                        <div id="shop-special-cost" style="display: none"><span>1</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                    </div>
+                    <div id="special-shuriken" class="modal-block" onclick="activateSpecial('shuriken')">
+                        <div class="shop-special-name">
+                            <img src="images/specials/shuriken.png" alt="Shuriken">
+                            <p>Shuriken</p>
+                        </div>
+                        <div id="shop-special-count"><span>1</span> Available</div>
+                        <div id="shop-special-cost" style="display: none"><span>1</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                    </div>
+                    <div id="special-energy" class="modal-block" onclick="activateSpecial('energy')">
+                        <div class="shop-special-name">
+                            <img src="images/specials/energy.png" alt="Energy">
+                            <p>Energy</p>
+                        </div>
                         <div id="shop-special-count"><span>1</span> Available</div>
                         <div id="shop-special-cost" style="display: none"><span>1</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
                     </div>
@@ -363,6 +387,7 @@
             <span class="close" onclick="closeModal('teamModal')">&times;</span>
             <div class="modal-content">
                 <div class="modal-header">
+                    <div class="modal-header-background team-header-background"></div>
                     <img src="images/celebration.png" class="modal-img" draggable="false">
                     <h2 class="modal-title">How TEAM works?</h2>
                     <div class="modal-subtitle">Choose team and win tournaments</div>

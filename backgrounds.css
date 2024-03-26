@@ -27,8 +27,6 @@
     background-size: cover;
     animation: 10s coinrise linear infinite;
     animation-duration: calc(50s / var(--i));
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgb(255, 255, 0);
   }
 
   @keyframes coinrise {

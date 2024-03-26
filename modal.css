@@ -1,7 +1,7 @@
 .modal {
     display: none;
     position: fixed;
-    z-index: 10;
+    z-index: 5;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -24,6 +24,7 @@
     border-radius: 0px 0px 0px 0px;
     box-sizing: border-box;
     overflow-y: auto;
+    z-index: 5;
 }
 
 .modal-button-arrow {
@@ -43,10 +44,24 @@
 }
 
 .modal-header {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 24px;
+    gap: 16px;
+    margin-bottom: 16px;
+    z-index: 5;
+}
+
+.modal-header-background {
+    position: absolute;
+    z-index: -1;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle at center, rgba(118, 58, 215, 1), rgba(118, 58, 215, 0) 66%);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
 }
 
 .modal-img {
@@ -121,6 +136,7 @@
     color: rgba(255, 255, 255, 1);
     font-size: 32px;
     cursor: pointer;
+    z-index: 10;
 }
 
 .close:hover,
@@ -147,6 +163,10 @@
 }
 
 /* Tasks modal */
+
+.task-header-background {
+    background: radial-gradient(circle at center, rgba(202, 58, 215, 1), rgba(202, 58, 215, 0) 66%);
+}
 
 .task-section {
     width: 100%;
@@ -208,6 +228,10 @@
 
 /* Frens modal */
 
+.shop-header-background {
+    background: radial-gradient(circle at center, rgba(118, 58, 215, 1), rgba(118, 58, 215, 0) 66%);
+}
+
 .frens-mainblock-img {
     display: block;
     width: 32px;
@@ -230,6 +254,10 @@
 }
 
 /* Shop modal */
+
+.shop-header-background {
+    background: radial-gradient(circle at center, rgba(202, 58, 215, 1), rgba(202, 58, 215, 0) 66%);
+}
 
 .shop-balance {
     display: flex;
@@ -262,23 +290,39 @@
 
 .shop-spcial-container {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     flex-direction: row;
     gap: 12px;
 }
 
-.shop-special {
+.shop-spcial-container > div {
+    flex: 1 0 calc(50% - 6px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    min-width: 120px;
     text-align: left;
     gap: 8px;
+    z-index: 5;
 }
 
 .shop-special-name {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.shop-special-name p {
     font-size: 13px;
     font-weight: bold;
+}
+
+.shop-special-name img {
+    width: 16px;
+    height: 16px;
 }
 
 .shop-upgrade-img {
@@ -311,6 +355,15 @@
 }
 
 /* Team modal */
+
+.team-header-background {
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 1), rgba(118, 58, 215, 0) 66%);
+    transform: translate(-50%, -80%);
+    left: 50%;
+    top: 50%;
+}
 
 .team-list {
     overflow-y: auto;
