@@ -178,10 +178,10 @@ function showIncome(income) {
     }, 1000);
 }
 
-function vibrate(duratin) {
+function vibrate() {
     
     if ("vibrate" in navigator) {
-      navigator.vibrate(100);
+      navigator.vibrate(50);
     } else {
       
     }
