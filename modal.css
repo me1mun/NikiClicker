@@ -110,7 +110,7 @@
     width: 100%;
     min-height: 64px;
     border-radius: 10px;
-    background: linear-gradient(90deg, rgba(112, 0, 255, 0.29) 0%, rgba(255, 0, 230, 0.06) 100%);
+    background: linear-gradient(90deg, rgba(51, 0, 255, 0.22) 0%, rgba(255, 0, 230, 0.08) 100%);
     padding: 16px;
     
 }
