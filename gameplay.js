@@ -181,7 +181,7 @@ function showIncome(income) {
 function vibrate() {
     
     if ("vibrate" in navigator) {
-      navigator.vibrate(25);
+      //navigator.vibrate(25);
     } else {
       
     }
