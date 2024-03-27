@@ -131,7 +131,7 @@ function earnCoins(value) {
             editEnergy(-value);
         }
 
-        vibrate(50);
+        vibrate(0.05);
     }
 }
 
@@ -269,7 +269,7 @@ function handlePetClick() {
         clearTimeout(petTimer);
         respawnPet();
 
-        vibrate(100);
+        vibrate(0.1);
     }
 }
 
@@ -418,7 +418,7 @@ function applySpecialEffects() {
         activateSpecialMode(specialName, 100, 10, 'images/specials/shuriken.png', 'rgba(167, 25, 255, 1)');
     }
 
-    vibrate(100);
+    vibrate(0.1);
 }
 
 function activateSpecialMode(specialName, factor, duration, imageUrl, backgroundColor) {
