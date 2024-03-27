@@ -411,11 +411,11 @@ function applySpecialEffects() {
     {
         editEnergy(energyMax - energy);
     } else if (specialName === "rocket") {
-        activateSpecialMode(specialName, 10, 10, 'images/specials/rocket.png', 'rgb(242, 137, 10)');
+        activateSpecialMode(specialName, 10, 10, 'images/specials/rocket.png', 'rgba(255, 150, 26, 1)');
     } else if (specialName === "bomb") {
-        activateSpecialMode(specialName, 50, 10, 'images/specials/bomb.png', 'rgb(42, 137, 210)');
+        activateSpecialMode(specialName, 50, 10, 'images/specials/bomb.png', 'rgba(39, 151, 255, 1)');
     } else if (specialName === "shuriken") {
-        activateSpecialMode(specialName, 150, 10, 'images/specials/shuriken.png', 'rgb(42, 237, 10)');
+        activateSpecialMode(specialName, 100, 10, 'images/specials/shuriken.png', 'rgba(167, 25, 255, 1)');
     }
 
     vibrate(100);
@@ -449,7 +449,7 @@ function showSpecialBackground(imageUrl, backgroundColor) {
     const backgroundInner = background.querySelector('div');
     background.style.display = 'block';
     if (backgroundColor) {
-        backgroundInner.style.background = 'radial-gradient(circle at center bottom, ' + backgroundColor + ', rgb(23, 23, 23) 75%)';
+        backgroundInner.style.background = 'radial-gradient(circle at center bottom, ' + backgroundColor + ', rgb(12, 12, 12) 75%)';
     }
     if (imageUrl) {
         const spans = backgroundInner.querySelectorAll('span');
