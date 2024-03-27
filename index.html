@@ -39,7 +39,7 @@
                 <img src="images/coin.png" class="stats-coin" alt="Coin-icon">
                 <div id="balance" class="coin-count">0</div>
             </div>
-            <div class="play-zone">
+            <div id="playZone" class="play-zone">
                 <div class="coin-glow"></div>
                 <div class="gameplay-coin">
                     <img id="gameplay-coin" src="images/coin.png" alt="Coin" draggable="false" onmousedown="clickCoin()">
@@ -64,23 +64,23 @@
         <footer class="footer">
             <div class="menu">
                 <button class="menu-button" onclick="openModal('tasksModal')">
-                    <div class="button-icon"><img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
+                    <img src="images/icons/coin.png" alt="Coin">
                     <span class="button-text">TASKS</span>
                 </button>
                 <div class="divider"></div>
                 <button class="menu-button" onclick="openModal('frensModal')">
-                    <div class="button-icon">🎁</div>
+                    <img src="images/icons/Gift.png" alt="Gift">
                     <span class="button-text">FRENS</span>
                 </button>
                 <div class="divider"></div>
                 <button class="menu-button">
-                    <div class="button-icon">🚀</div>
-                    <span class="button-text">PLAY</span>
+                    <img src="images/icons/Niki.png" alt="Niki">
+                    <span class="button-text">Niki</span>
                 </button>
                 <div class="divider"></div>
                 <button class="menu-button" onclick="openModal('shopModal')">
-                    <div class="button-icon">🛍</div>
-                    <span class="button-text">SHOP</span>
+                    <img src="images/icons/Rocket.png" alt="Rocket">
+                    <span class="button-text">BOOSTS</span>
                 </button>
             </div>
         </footer>
@@ -299,39 +299,31 @@
                         <img src="images/coin.png" class="stats-coin" alt="Coin-icon">
                         <div id="balance" class="coin-count">0</div>
                     </div>
-                    <div class="modal-title">SHOP</div>
+                    <div class="modal-title">BOOSTS</div>
                 </div>
                 <div class="modal-section-title">Specials</div>
                 <div class="shop-spcial-container">
                     <div id="special-rocket" class="modal-block" onclick="activateSpecial('rocket')">
-                        <div class="shop-special-name">
-                            <img src="images/specials/rocket.png" alt="Rocket">
-                            <p>Rocket</p>
-                        </div>
+                        <img class="shop-special-image" src="images/specials/rocket.png" alt="Rocket">
+                        <p class="shop-special-name">Rocket</p>
                         <div id="shop-special-count"><span>1</span> Available</div>
                         <div id="shop-special-cost" style="display: none"><span>1</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
                     </div>
                     <div id="special-bomb" class="modal-block" onclick="activateSpecial('bomb')">
-                        <div class="shop-special-name">
-                            <img src="images/specials/bomb.png" alt="Bomb">
-                            <p>Bomb</p>
-                        </div>
+                        <img class="shop-special-image" src="images/specials/bomb.png" alt="Bomb">
+                        <p class="shop-special-name">Bomb</p>
                         <div id="shop-special-count"><span>1</span> Available</div>
                         <div id="shop-special-cost" style="display: none"><span>1</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
                     </div>
                     <div id="special-shuriken" class="modal-block" onclick="activateSpecial('shuriken')">
-                        <div class="shop-special-name">
-                            <img src="images/specials/shuriken.png" alt="Shuriken">
-                            <p>Shuriken</p>
-                        </div>
+                        <img class="shop-special-image" src="images/specials/shuriken.png" alt="Shuriken">
+                        <p class="shop-special-name">Shuriken</p>
                         <div id="shop-special-count"><span>1</span> Available</div>
                         <div id="shop-special-cost" style="display: none"><span>1</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
                     </div>
                     <div id="special-energy" class="modal-block" onclick="activateSpecial('energy')">
-                        <div class="shop-special-name">
-                            <img src="images/specials/energy.png" alt="Energy">
-                            <p>Energy</p>
-                        </div>
+                        <img class="shop-special-image" src="images/specials/energy.png" alt="Energy">
+                        <p class="shop-special-name">Energy</p>
                         <div id="shop-special-count"><span>1</span> Available</div>
                         <div id="shop-special-cost" style="display: none"><span>1</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
                     </div>

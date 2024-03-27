@@ -190,6 +190,7 @@ body {
 .income {
     position: absolute;
     font-size: 28px;
+    z-index: 1;
     font-weight: bold;
     color: rgb(255, 255, 255);
     opacity: 1;
@@ -197,12 +198,14 @@ body {
     pointer-events: none;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
     text-align: center;
+    transform: translate(-50%, -50%) 
 }
 
 
 .gameplay-coin {
     width: 60%;
     height: auto;
+    z-index: 0;
 }
 
 .gameplay-coin img {
@@ -293,8 +296,9 @@ body {
     outline: none;
 }
 
-.button-icon {
-    font-size: 22px;
+.menu-button img {
+    width: 24px;
+    height: 24px;
     margin-bottom: 6px;
 }
 

@@ -114,15 +114,13 @@ function earnCoins(value) {
     let isSpecialMode = activeSpecial.name !== "none";
 
     if (isSpecialMode) {
-        value *= activeSpecial.factor;
+        let randomFactorOptions = [0.5, 1, 1.5];
+        let randomFactor = randomFactorOptions[Math.floor(Math.random() * randomFactorOptions.length)];
+        value *= activeSpecial.factor * randomFactor;
     } else {
         if (value > energy) {
             value = energy;
         }
-    }
-
-    if (value > energy) {
-        value = energy;
     }
     
     if (value > 0) {
@@ -160,7 +158,7 @@ function showIncome(income) {
     incomeElement.innerText = '' + income;
 
     incomeElement.classList.add('income');
-    incomeElement.style.left = (cursorX - 4) + 'px';
+    incomeElement.style.left = (cursorX) + 'px';
     incomeElement.style.top = (cursorY - 24) + 'px';
 
     document.body.appendChild(incomeElement);
@@ -414,7 +412,7 @@ function applySpecialEffects() {
     } else if (specialName === "bomb") {
         activateSpecialMode(specialName, 50, 10, 'images/specials/bomb.png', 'rgb(42, 137, 210)');
     } else if (specialName === "shuriken") {
-        activateSpecialMode(specialName, 100, 10, 'images/specials/shuriken.png', 'rgb(42, 237, 10)');
+        activateSpecialMode(specialName, 150, 10, 'images/specials/shuriken.png', 'rgb(42, 237, 10)');
     }
 }
 
