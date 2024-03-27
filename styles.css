@@ -235,17 +235,18 @@ body {
 .energy-wrapper {
     width: 100%;
     display: flex;
+    gap: 4px;
     align-items: center;
     margin-bottom: 10%;
 }
 
 .energy-icon {
-    margin-right: 2px;
-    font-size: 20px;
+    width: 16px;
+    height: 16px;
 }
 
 .energy-counter {
-    margin-right: 8px;
+    margin-right: 4px;
     font-weight: 700;
     font-size: 14px;
 }
@@ -279,7 +280,7 @@ body {
     align-items: center;
     background: linear-gradient(90deg, rgba(0, 194, 255, 0.29) 0%, rgba(255, 0, 230, 0.06) 100%);
     border-radius: 10px;
-    padding: 15px;
+    padding: 12px;
 }
 
 .menu-button {

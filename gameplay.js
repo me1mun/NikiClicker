@@ -181,7 +181,7 @@ function showIncome(income) {
 function vibrate() {
     
     if ("vibrate" in navigator) {
-      navigator.vibrate(50);
+      navigator.vibrate(25);
     } else {
       
     }
@@ -415,7 +415,7 @@ function applySpecialEffects() {
     } else if (specialName === "bomb") {
         activateSpecialMode(specialName, 50, 10, 'images/specials/bomb.png', 'rgba(39, 151, 255, 1)');
     } else if (specialName === "shuriken") {
-        activateSpecialMode(specialName, 100, 10, 'images/specials/shuriken.png', 'rgba(167, 25, 255, 1)');
+        activateSpecialMode(specialName, 150, 10, 'images/specials/shuriken.png', 'rgba(167, 25, 255, 1)');
     }
 
     vibrate();
