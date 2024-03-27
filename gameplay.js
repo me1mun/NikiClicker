@@ -130,6 +130,8 @@ function earnCoins(value) {
         if (!isSpecialMode) {
             editEnergy(-value);
         }
+
+        vibrate(50);
     }
 }
 
@@ -176,6 +178,15 @@ function showIncome(income) {
     }, 1000);
 }
 
+function vibrate(duration) {
+    
+    if ("vibrate" in navigator) {
+      navigator.vibrate(duration * 1000);
+    } else {
+      
+    }
+  }
+
 function refreshUI() {
     refreshEnergyUI();
     refreshBalanceUI();
@@ -194,16 +205,6 @@ function refreshBalanceUI() {
     balanceElements.forEach(function(element) {
         element.textContent = coins.toLocaleString('en-EN');
     });
-}
-
-function flipCoin() {
-    let coinElement = document.querySelector('.gameplay-coin');
-    let angle = 0;
-    angle += 45;
-    coinElement.style.transform = `rotateY(${angle}deg)`;
-    setTimeout(() => {
-        coinElement.style.transform = `rotateY(${angle - 45}deg)`;
-    }, 500);
 }
 
 function rechargeEnergy() {
@@ -267,6 +268,8 @@ function handlePetClick() {
 
         clearTimeout(petTimer);
         respawnPet();
+
+        vibrate(100);
     }
 }
 
@@ -414,6 +417,8 @@ function applySpecialEffects() {
     } else if (specialName === "shuriken") {
         activateSpecialMode(specialName, 150, 10, 'images/specials/shuriken.png', 'rgb(42, 237, 10)');
     }
+
+    vibrate(100);
 }
 
 function activateSpecialMode(specialName, factor, duration, imageUrl, backgroundColor) {
