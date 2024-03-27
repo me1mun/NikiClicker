@@ -131,7 +131,7 @@ function earnCoins(value) {
             editEnergy(-value);
         }
 
-        vibrate(0.05);
+        vibrate();
     }
 }
 
@@ -178,10 +178,10 @@ function showIncome(income) {
     }, 1000);
 }
 
-function vibrate(duration) {
+function vibrate(duratin) {
     
     if ("vibrate" in navigator) {
-      navigator.vibrate(duration * 1000);
+      navigator.vibrate(100);
     } else {
       
     }
@@ -269,7 +269,7 @@ function handlePetClick() {
         clearTimeout(petTimer);
         respawnPet();
 
-        vibrate(0.1);
+        vibrate();
     }
 }
 
@@ -418,7 +418,7 @@ function applySpecialEffects() {
         activateSpecialMode(specialName, 100, 10, 'images/specials/shuriken.png', 'rgba(167, 25, 255, 1)');
     }
 
-    vibrate(0.1);
+    vibrate();
 }
 
 function activateSpecialMode(specialName, factor, duration, imageUrl, backgroundColor) {
