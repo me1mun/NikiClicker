@@ -294,6 +294,7 @@ body {
     flex-direction: column;
     align-items: center;
     outline: none;
+    font-weight: bold;
 }
 
 .menu-button img {
