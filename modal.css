@@ -408,3 +408,34 @@
     background: linear-gradient(90deg, #FB4FFF 0%, #25B1FF 100%);
     box-shadow: 0px 0px 16px rgb(48, 165, 255);
 }
+
+/* Team modal */
+
+.nikiboom-gamelist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nikiboom-gamelist > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 8px;
+    width: 100%;
+}
+
+.nikiboom-game-info {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.nikiboom-game-info > img {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 10%;
+    object-fit: cover;
+}

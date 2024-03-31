@@ -74,8 +74,8 @@
                 </button>
                 <div class="divider"></div>
                 <button class="menu-button">
-                    <img src="images/icons/Niki.png" alt="Niki" style="width: 28px; height: 28px;">
-                    <span class="button-text">NIKI BOOM</span>
+                    <img src="images/icons/Niki.png" alt="Niki" onclick="openModal('nikiboomModal')">
+                    <span class="button-text">PLAY</span>
                 </button>
                 <div class="divider"></div>
                 <button class="menu-button" onclick="openModal('shopModal')">
@@ -348,7 +348,7 @@
                             <div class="shop-upgrade-icon">⚡️</div>
                         </div>
                         <div>
-                            <div class="shop-upgrade-name">️Recharging speed - Your girl dreams about it  </div>
+                            <div class="shop-upgrade-name">Recharging speed - Your girl dreams about it  </div>
                             <div class="shop-upgrade-description">
                                 <div id="shop-upgrade-level">Level: <span>1</span></div>
                                 <div id="shop-upgrade-cost">Cost: <span>1000</span> <img src="images/coin.png" class="coin-icon" alt="Coin-icon"></div>
@@ -387,7 +387,6 @@
                 <button class="modal-button-long team-button-orange">Create your Team</button>
                 <button class="modal-button-long team-button-purple">Join Team</button>
                 <div class="modal-block team-list">
-                    <!-- Example team item -->
                     <div class="team-item">
                         <img src="images/teams/teamlogo_1.jpg" class="team-logo">
                         <div class="team-details">
@@ -412,7 +411,36 @@
                         </div>
                         <button class="modal-button-arrow">›</button>
                     </div>
-                    <!-- Repeat for each team -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="nikiboomModal" class="modal">
+        <div class="modal-container">
+            <span class="close" onclick="closeModal('nikiboomModal')">&times;</span>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-header-background"></div>
+                    <img src="images/icons/Niki.png" class="modal-img" draggable="false">
+                    <h2 class="modal-title">Play our games 😉</h2>
+                </div>
+                <div class="nikiboom-gamelist">
+                    <div class="modal-block">
+                        <div class="nikiboom-game-info">
+                            <img src="images/games/nikiboom.png">
+                            <p>NIKI BOOM<br/>Merge PEPE, BOBO, SHIBA - earn coins<img src="images/coin.png" class="coin-icon" alt="Coin-icon"></p>
+                        </div>
+                        <button class="modal-button-long">Play</button>
+                    </div>
+
+                    <div class="modal-block">
+                        <div class="nikiboom-game-info">
+                            <img src="images/games/soon.png">
+                            <p>MEME Guys (Coming Soon)<br/>Multiplayer online competitive game</p>
+                        </div>
+                        <button class="modal-button-long">Coming soon</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -421,6 +449,6 @@
     <script src="appInit.js"></script>
     <script src="interface.js"></script>
     <script src="gameplay.js"></script>
-
+    <script src="web.js"></script>
 </body>
 </html>

@@ -102,6 +102,8 @@ function clickCoin() {
     let coinsEarned = getUpgradeLevel("multitap");
 
     earnCoins(coinsEarned);
+
+    sendBalance(coins, energy);
 }
 
 function pay(value) {
