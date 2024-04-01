@@ -103,7 +103,8 @@ function clickCoin() {
 
     earnCoins(coinsEarned);
 
-    sendBalance(coins, energy);
+    //getUser();
+    //sendBalance(coins, energy);
 }
 
 function pay(value) {

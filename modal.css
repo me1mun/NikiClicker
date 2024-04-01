@@ -1,7 +1,7 @@
 .modal {
     display: none;
     position: fixed;
-    z-index: 5;
+    z-index: 10;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -24,7 +24,7 @@
     border-radius: 0px 0px 0px 0px;
     box-sizing: border-box;
     overflow-y: auto;
-    z-index: 5;
+    z-index: -5;
 }
 
 .modal-button-arrow {
@@ -50,18 +50,19 @@
     justify-content: center;
     gap: 16px;
     margin-bottom: 16px;
-    z-index: 5;
+    z-index: -1;
 }
 
 .modal-header-background {
     position: absolute;
-    z-index: -1;
-    width: 360px;
-    height: 360px;
-    background: radial-gradient(circle at center, rgba(118, 58, 215, 1), rgba(118, 58, 215, 0) 66%);
+    z-index: -2;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle at center, rgba(118, 58, 215, 0.75), rgba(118, 58, 215, 0) 66%);
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
+    overflow: visible;
 }
 
 .modal-img {
@@ -100,6 +101,7 @@
     gap: 16px;
     max-width: 480px;
     margin: 0 auto;
+    z-index: 5;
 }
 
 .modal-block {
@@ -146,26 +148,10 @@
     cursor: pointer;
 }
 
-.modal-button-long {
-    width: 100%;
-    min-height: 48px;
-    padding: 12px 8px;
-    margin-bottom: 8px;
-    margin-top: 8px;
-    background-color: orange;
-    color: white;
-    font-weight: normal;
-    font-size: 14px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
 /* Tasks modal */
 
 .task-header-background {
-    background: radial-gradient(circle at center, rgba(202, 58, 215, 1), rgba(202, 58, 215, 0) 66%);
+    background: radial-gradient(circle at center, rgba(191, 58, 215, 0.75), rgba(202, 58, 215, 0) 66%);
 }
 
 .task-section {
@@ -229,7 +215,7 @@
 /* Frens modal */
 
 .shop-header-background {
-    background: radial-gradient(circle at center, rgba(118, 58, 215, 1), rgba(118, 58, 215, 0) 66%);
+    background: radial-gradient(circle at center, rgba(191, 58, 215, 0.75), rgba(118, 58, 215, 0) 66%);
 }
 
 .frens-mainblock-img {
@@ -256,7 +242,7 @@
 /* Shop modal */
 
 .shop-header-background {
-    background: radial-gradient(circle at center, rgba(202, 58, 215, 1), rgba(202, 58, 215, 0) 66%);
+    background: radial-gradient(circle at center, rgba(191, 58, 215, 0.75), rgba(202, 58, 215, 0) 66%);
 }
 
 .shop-balance {
@@ -357,10 +343,10 @@
 /* Team modal */
 
 .team-header-background {
-    width: 480px;
-    height: 480px;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 1), rgba(118, 58, 215, 0) 66%);
-    transform: translate(-50%, -80%);
+    width: 640px;
+    height: 640px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 1), rgba(118, 58, 215, 1), rgba(118, 58, 215, 0) 66%);
+    transform: translate(-50%, -60%);
     left: 50%;
     top: 50%;
 }
@@ -397,16 +383,6 @@
 
 .team-league {
     color: lightgray;
-}
-
-.team-button-orange {
-    background: rgba(255, 149, 51, 1);
-    box-shadow: 0px 0px 16px rgba(255, 149, 51, 1);
-}
-
-.team-button-purple {
-    background: linear-gradient(90deg, #FB4FFF 0%, #25B1FF 100%);
-    box-shadow: 0px 0px 16px rgb(48, 165, 255);
 }
 
 /* Team modal */

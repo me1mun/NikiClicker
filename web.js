@@ -1,7 +1,7 @@
-let userId = "testUser";
+let userId = "1";
 
 function sendBalance(balance, energy) {
-    fetch("https://6890-84-54-153-174.ngrok-free.app/update_coins_and_energy", {
+    fetch("https://cee0-84-54-153-174.ngrok-free.app/update_coins_and_energy", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -16,7 +16,7 @@ function sendBalance(balance, energy) {
 }
 
 function getUser() {
-    fetch("https://6890-84-54-153-174.ngrok-free.app/initialize_user?user_id=" + userId)
+    fetch("https://cee0-84-54-153-174.ngrok-free.app/initialize_user?user_id=" + userId)
         .then(response => response.json())
         .then(data => console.log(data));
 }
