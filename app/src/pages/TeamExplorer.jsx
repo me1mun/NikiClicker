@@ -16,7 +16,7 @@ export const TeamExplorer = () => {
         const fetchTeams = async () => {
             const teamsData = await getTopTeams();
             if (teamsData) {
-                setTeamList(teamsData);
+                setTeamList(teamsData.teams);
             }
         };
 
@@ -30,12 +30,12 @@ export const TeamExplorer = () => {
         if (searchTerm === '') {
             const teamsData = await getTopTeams();
             if (teamsData) {
-                setTeamList(teamsData);
+                setTeamList(teamsData.teams);
             }
         } else {
             const searchResults = await getSearchTeams(searchTerm);
-            if (searchResults) {
-                setTeamList(searchResults);
+            if (Array.isArray(searchResults.teams)) {
+                setTeamList(searchResults.teams);
             }
         }
     };

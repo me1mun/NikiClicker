@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { getUserInfo, getUserUpgrades, getUserSpecials, getUserRefferedCount } from './http';
+import { getUserInfo, getUserUpgrades, getUserSpecials, getUserRefferedCount, sendSpecial, sendCoinsAndEnergy, sendUpgrade, sendJoinTeam, sendLeaveTeam } from './http';
 
 export const AppContext = createContext({
     user: null,
@@ -17,6 +17,7 @@ export const AppContext = createContext({
 export const useAppData = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
+    const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
     const [coins, setCoins] = useState(10);
     const [refferedCount, setRefferedCount] = useState(0);
@@ -33,18 +34,27 @@ export const AppProvider = ({ children }) => {
         { id: "rocket", count: 1 },
         { id: "bomb", count: 1 },
         { id: "shuriken", count: 1 },
-        { id: "energy", count: 1 }
+        { id: "full_energy", count: 1 }
     ]);
     const [specialMode, setSpecialMode] = useState(null);
     const [specialModeTimer, setSpecialModeTimer] = useState(null);
 
-    const activateSpecial = (specialId) => {
+    useEffect(() => {
+        if (!loading) {
+            sendCoinsAndEnergy(coins, energy);
+        }
+    }, [coins]);
+
+    const activateSpecial = async (specialId) => {
         const specialIndex = specials.findIndex(special => special.id === specialId);
         
-        if (specialIndex !== -1 && specials[specialIndex].count > 0) {
+        if (specials[specialIndex].count > 0) {
             const updatedSpecials = [...specials];
             updatedSpecials[specialIndex].count -= 1;
             setSpecials(updatedSpecials);
+
+            console.log("abs");
+            await sendSpecial(specialId);
     
             if (specialId === 'rocket') {
                 enableSpecialMode(specialId, 10, 10);
@@ -52,7 +62,7 @@ export const AppProvider = ({ children }) => {
                 enableSpecialMode(specialId, 50, 10);
             } else if (specialId === 'shuriken') {
                 enableSpecialMode(specialId, 150, 10);
-            } else if (specialId === 'energy') {
+            } else if (specialId === 'full_energy') {
                 setEnergy(energyLimit);
             }
         } else {
@@ -87,7 +97,7 @@ export const AppProvider = ({ children }) => {
     const updateUpgradesValue = () => {
         upgrades.forEach(upgrade => {
             if (upgrade.id === 'energyLimit') {
-                setEnergyLimit(500 + upgrade.level * 500);
+                setEnergyLimit(500 + (upgrade.level * 500));
             }
             if (upgrade.id === 'multitap') {
                 setClickCost(upgrade.level);
@@ -96,6 +106,7 @@ export const AppProvider = ({ children }) => {
                 setEnergyRechargeDelay(1000 / upgrade.level);
             }
         });
+        
     }
 
     useEffect(() => {
@@ -107,7 +118,7 @@ export const AppProvider = ({ children }) => {
             }
         }, energyRechargeDelay);
         return () => clearInterval(energyGenerationInterval);
-    }, [energyRechargeDelay]);
+    }, [energyRechargeDelay, loading]);
 
     const getUserInfoData = async () => {
         const data = await getUserInfo();
@@ -127,54 +138,41 @@ export const AppProvider = ({ children }) => {
         if (data) {
             const formattedUpgrades = [];
 
-            if (data) {
-                const { multitap_level, recharging_speed_level, energy_limit_level } = data;
+            const { multitap_level, recharging_speed_level, energy_limit_level } = data;
 
-                formattedUpgrades.push({ id: "multitap", level: multitap_level });
-                formattedUpgrades.push({ id: "rechargingSpeed", level: recharging_speed_level });
-                formattedUpgrades.push({ id: "energyLimit", level: energy_limit_level });
-            }
+            formattedUpgrades.push({ id: "multitap", level: multitap_level });
+            formattedUpgrades.push({ id: "rechargingSpeed", level: recharging_speed_level });
+            formattedUpgrades.push({ id: "energyLimit", level: energy_limit_level });
 
             setUpgrades(formattedUpgrades);
         }
 
-        updateUpgradesValue();
     }
 
     const purchaiseUpgrade = (upgradeId) => {
         const upgradeIndex = upgrades.findIndex(upgrade => upgrade.id === upgradeId);
     
-        if (upgradeIndex !== -1) {
-            const newUpgrades = [...upgrades];
-            newUpgrades[upgradeIndex].level += 1;
-            setUpgrades(newUpgrades);
-            updateUpgradesValue();
-        } else {
-            console.error(`Upgrade with id ${upgradeId} not found`);
-        }
+        const newUpgrades = [...upgrades];
+        newUpgrades[upgradeIndex].level += 1;
+        setUpgrades(newUpgrades);
+            
+        sendUpgrade(upgradeId);
     }
 
     const getUserRefferedCountData = async () => {
         const data = await getUserRefferedCount();
         if (data) {
             setRefferedCount(data.friends_reffered_count);
-            console.log('referals', data);
         }
     }
 
     const getUserSpecialsData = async () => {
         const data = await getUserSpecials();
         if (data) {
-            const formattedSpecials = [];
-
-            if (data) {
-                const { rocket_count, bomb_count, shuriken, full_energy } = data;
-
-                formattedSpecials.push({ id: "rocket", count: rocket_count });
-                formattedSpecials.push({ id: "bomb", count: bomb_count });
-                formattedSpecials.push({ id: "shuriken", count: shuriken });
-                formattedSpecials.push({ id: "energy", count: full_energy });
-            }
+            const formattedSpecials = Object.entries(data).map(([key, value]) => ({
+                id: key,
+                count: value
+            }));
 
             setSpecials(formattedSpecials);
         }
@@ -185,6 +183,8 @@ export const AppProvider = ({ children }) => {
             ...prevUser,
             team: teamId
         }));
+
+        sendJoinTeam(teamId);
     }
     
     const exitTeam = () => {
@@ -192,6 +192,8 @@ export const AppProvider = ({ children }) => {
             ...prevUser,
             team: null
         }));
+
+        sendLeaveTeam();
     }
 
     useEffect(() => {
@@ -200,10 +202,17 @@ export const AppProvider = ({ children }) => {
             await getUserUpgradesData();
             await getUserSpecialsData();
             await getUserRefferedCountData();
+
+            setLoading(false);
         };
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        updateUpgradesValue();
+        
+    }, [upgrades])
 
     return (
         <AppContext.Provider value={{ 

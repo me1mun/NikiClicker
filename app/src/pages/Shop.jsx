@@ -131,7 +131,7 @@ const getSpecialImage = (name) => {
             return specialBombImg;
         case "shuriken":
             return specialShurikenImg;
-        case "energy":
+        case "full_energy":
             return specialEnergyImg;
         default:
             return null;
